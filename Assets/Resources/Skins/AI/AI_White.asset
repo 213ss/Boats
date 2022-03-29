@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfb39e5673741be8650dd12037aa6e4, type: 3}
+  m_Name: AI_White
+  m_EditorClassIdentifier: 
+  _skinName: AI_White
+  _skinDescription: 
+  _skinCost: 0
+  _skinPrefab: {fileID: 8975337257675985134, guid: 76a933e29589f3d43bda6bc77ec184e6, type: 3}
