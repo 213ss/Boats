@@ -1,4 +1,6 @@
 ﻿using Actors;
+using Infrastructure.Services.AnalyticsServices;
+using Scripts.Infrastructure.Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -46,6 +48,11 @@ namespace Logic.GoldLoot
             if (other.TryGetComponent<Actor>(out var actor))
             {
                 actor.GoldService.AddGold(_goldCount);
+                if (actor.ActorTeam == Team.Player_0)
+                {
+                    GameAnalyticsService.Instance.EventTakeResource(_goldCount, TakeGoldType.PickedUpCoins);
+                }
+                
                 Destroy(_rigidbody.gameObject);
             }
         }

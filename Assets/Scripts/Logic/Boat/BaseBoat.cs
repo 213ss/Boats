@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using Actors;
+using Infrastructure.Services.UIDirect;
 using Logic.UI.GoldWidget;
+using Scripts.Infrastructure.Data;
 using Scripts.Infrastructure.Services.Gold;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Logic.Boat
 {
@@ -28,7 +31,14 @@ namespace Logic.Boat
         private Actor _passenger;
         private Transform _destinationPoint;
         private IGoldChanger _gold;
+        private IUIIndicatorService _uiIndicatorService;
 
+        [Inject]
+        private void Construct(IUIIndicatorService uiIndicatorService)
+        {
+            _uiIndicatorService = uiIndicatorService;
+        }
+        
 
         private void Awake()
         {
@@ -84,6 +94,9 @@ namespace Logic.Boat
 
         private IEnumerator Delivery()
         {
+            if(_passenger.ActorTeam == Team.Player_0)
+                _uiIndicatorService.DisableIndicator();
+            
             _passenger.IsTravel = true;
             _goldCountIndicator.DisableIndicator();
             OnStartDelivery?.Invoke(_passenger);
@@ -113,6 +126,12 @@ namespace Logic.Boat
 
         private void DropOff()
         {
+            if (_passenger.ActorTeam == Team.Player_0)
+            {
+                _uiIndicatorService.SetFollowingObject(_passenger.CurrentIsland.PiersTransform);
+                _uiIndicatorService.EnableIndicator();
+            }
+
             _passenger.ActorTransform.parent = null;
             _passenger.ActorTransform.position = _destinationPoint.position;
             _passenger.GetComponent<IMovement>().EnableMoveComponent();

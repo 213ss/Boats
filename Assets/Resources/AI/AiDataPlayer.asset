@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _aiDifficulty: 3
   _baseTimeScanGoldTrigger: 5
+  _baseTimePatrol: 5
   _chanceAttack: 100
   _timeReloadsAttack: 1.5

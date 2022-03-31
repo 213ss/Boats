@@ -23,6 +23,7 @@ namespace Logic.Island
         
         public int CostDelivery => _costDelivery;
         public Vector3 PierPosition => _boatsPier.position;
+        public Transform PiersTransform => _boatsPier;
         
         [Header("Trigger parameters")]
         [SerializeField] private int _countTriggers;

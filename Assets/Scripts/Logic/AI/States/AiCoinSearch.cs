@@ -19,8 +19,7 @@ namespace Logic.AI.States
 
         private Actor _currentTarget;
         
-
-        private Coroutine _searchCointCoroutine;
+        private Coroutine _searchCoinsCoroutine;
         private BaseIsland _island;
         private readonly IAIMovement _movement;
         private Collider[] _bufferGoldLoot = new Collider[5];
@@ -40,13 +39,13 @@ namespace Logic.AI.States
         public void Enter() 
         {
             _island = _islandService.TryGetIslandForActor(_ownerActor);
-            _searchCointCoroutine = _coroutineRunner.StartCoroutine(SearchCoin());
+            _searchCoinsCoroutine = _coroutineRunner.StartCoroutine(SearchCoin());
         }
 
         public void Exit()
         {
-            if(_searchCointCoroutine != null)
-                _coroutineRunner.StopCoroutine(_searchCointCoroutine);
+            if(_searchCoinsCoroutine != null)
+                _coroutineRunner.StopCoroutine(_searchCoinsCoroutine);
         }
 
         private IEnumerator SearchCoin()

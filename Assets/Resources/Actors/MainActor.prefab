@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: -7740895512795278809}
   - component: {fileID: 9190841931322454437}
   - component: {fileID: 9184741184390017365}
+  - component: {fileID: 7489918284827497698}
   m_Layer: 7
   m_Name: MainActor
   m_TagString: Player
@@ -218,7 +219,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actorName: Player 1
   _actorTeam: 0
+  _approachDistance: 1
   _actorTransform: {fileID: 4845112060291433084}
+  _immortalTime: 3
 --- !u!114 &6608493392980597302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +345,22 @@ MonoBehaviour:
   _ownerActor: {fileID: 1639102232541942983}
   _weapon: {fileID: 6608493392980597302}
   _actorDetector: {fileID: 629918666}
+--- !u!114 &7489918284827497698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845112060291433072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8de32a06234453b4fef03ac25a0ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshSocket: {fileID: 3208273591315929368}
+  _transparentMaterial: {fileID: 2100000, guid: b4e74f66f2a71d84f8c1349823a15c53, type: 2}
+  _interval: 0.3
+  _alphaPower: 0.8
 --- !u!1 &5262003993084402407
 GameObject:
   m_ObjectHideFlags: 0

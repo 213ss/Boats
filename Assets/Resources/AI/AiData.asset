@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0f53efd7d46ed8640f7116f97593d, type: 3}
   m_Name: AiData
   m_EditorClassIdentifier: 
-  _aiDifficulty: 0
-  _baseTimeScanGoldTrigger: 5
+  _aiDifficulty: 1
+  _baseTimeScanGoldTrigger: 6
+  _baseTimePatrol: 6
   _chanceAttack: 20
-  _timeReloadsAttack: 1.5
+  _timeReloadsAttack: 1.7

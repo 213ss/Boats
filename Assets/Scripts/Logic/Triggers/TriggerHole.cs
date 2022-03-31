@@ -1,5 +1,7 @@
 using Actors;
+using Infrastructure.Services.AnalyticsServices;
 using Logic.GoldLoot;
+using Scripts.Infrastructure.Data;
 using UnityEngine;
 
 public class TriggerHole : MonoBehaviour
@@ -25,6 +27,10 @@ public class TriggerHole : MonoBehaviour
             if(gold <= 0.0f) return;
 
             actor.GoldService.SubstractionGold(gold);
+            
+            if(actor.ActorTeam == Team.Player_0)
+                GameAnalyticsService.Instance.EventDropResource(gold, DropGoldType.EnterHoleTrigger);
+            
             float goldPerShard = gold / _shardCount;
             
             for (int i = 0; i < _shardCount; ++i)

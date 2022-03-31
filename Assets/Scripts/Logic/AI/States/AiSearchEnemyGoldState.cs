@@ -55,9 +55,17 @@ namespace Logic.AI.States
 
                         if (Vector3.Distance(_ownerActor.ActorTransform.position, target.ActorTransform.position) < _ownerActor.ApproachDistance)
                         {
-                            target = GetRandomTarget();
-                            if(target == null)
-                                _stateMachine.Enter<AiCoinSearch>();
+                            int chance = Random.Range(0, 6);
+                            if (chance == 0)
+                            {
+                                target = GetRandomTarget();
+                                if(target == null)
+                                    _stateMachine.Enter<AiCoinSearch>();
+                            }
+                            else
+                            {
+                                _stateMachine.Enter<AiPatrolState>();
+                            }
                         }
                     }
                 }

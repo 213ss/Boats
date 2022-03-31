@@ -32,6 +32,8 @@ namespace Infrastructure.Services.GroundDetector
         
         private IEnumerator GroundChecker()
         {
+            yield return new WaitForSeconds(0.4f);
+            
             while (true)
             {
                 if (DistanceToGround(out var distance))

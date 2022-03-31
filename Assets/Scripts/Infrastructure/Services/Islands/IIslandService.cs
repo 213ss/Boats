@@ -1,4 +1,5 @@
-﻿using Actors;
+﻿using System;
+using Actors;
 using Logic.Island;
 
 namespace Infrastructure.Services.Islands
@@ -9,5 +10,7 @@ namespace Infrastructure.Services.Islands
         void SetActorToNextIsland(Actor actor);
         void RemoveActorFromIsland(Actor actor);
         BaseIsland TryGetIslandForActor(Actor actor);
+        int GetCountIslands();
+        event Action<int> EventActorNewIsland;
     }
 }

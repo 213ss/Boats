@@ -1,11 +1,15 @@
+using System;
 using Actors;
 using Logic.Island;
+using Scripts.Infrastructure.Data;
 using UnityEngine;
 
 namespace Infrastructure.Services.Islands
 {
     public class IslandService : MonoBehaviour, IIslandService
     {
+        public event Action<int> EventActorNewIsland; 
+
         [SerializeField] private BaseIsland[] _allIslands;
 
         private void Awake()
@@ -19,6 +23,11 @@ namespace Infrastructure.Services.Islands
             _allIslands[0].AddActorToIsland(actor);
             actor.SetCurrentIsland(_allIslands[0]);
         }
+
+        public int GetCountIslands()
+        {
+            return _allIslands.Length;
+        }
         
 
         public void SetActorToNextIsland(Actor actor)
@@ -31,6 +40,9 @@ namespace Infrastructure.Services.Islands
                 _allIslands[--currentIslandIndex].RemoveActorFromIsland(actor);
                 _allIslands[++currentIslandIndex].AddActorToIsland(actor);
                 actor.SetCurrentIsland(_allIslands[currentIslandIndex]);
+                
+                if(actor.ActorTeam == Team.Player_0)
+                    EventActorNewIsland?.Invoke(currentIslandIndex);
             }
         }
 

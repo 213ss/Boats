@@ -23,5 +23,10 @@ namespace Infrastructure.Services.SkinChanger
             _actorSkinData = skinData;
             _skinGameObject = Instantiate(skinData.SkinPrefab, _staticMeshSocket);
         }
+
+        public SkinnedMeshRenderer GetMeshRenderer()
+        {
+            return _staticMeshSocket.GetComponentInChildren<SkinnedMeshRenderer>();
+        }
     }
 }

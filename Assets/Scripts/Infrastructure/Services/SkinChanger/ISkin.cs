@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Data.ScriptableObjects;
+using UnityEngine;
 
 namespace Infrastructure.Services.SkinChanger
 {
@@ -6,5 +7,6 @@ namespace Infrastructure.Services.SkinChanger
     {
         public ActorSkinData GetSkinData { get; }
         public void ChangeSkin(ActorSkinData skinData);
+        SkinnedMeshRenderer GetMeshRenderer();
     }
 }

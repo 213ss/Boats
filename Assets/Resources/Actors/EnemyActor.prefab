@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actorName: Enemy
   _actorTeam: 1
+  _approachDistance: 0.8
   _actorTransform: {fileID: 6377871325412379308}
   _goldIndicator: {fileID: 1546121121}
   _weaponShovel: {fileID: 1860606467528691601}

@@ -1,3 +1,4 @@
+using System.Collections;
 using Damageable;
 using Infrastructure.Data;
 using Infrastructure.Services.GoldLoot;
@@ -5,13 +6,16 @@ using Infrastructure.Services.GroundDetector;
 using Infrastructure.Services.InputServices;
 using Infrastructure.Services.SkinChanger;
 using Infrastructure.Services.Vibrate;
+using Logic.ImmortalAnim;
 using UnityEngine;
 using Zenject;
 
 namespace Actors.Actors
 {
     public class PlayerActor : Actor, IApplyForce, ISavedProgress
-    { 
+    {
+        [SerializeField] private float _immortalTime;
+        
         private IInputServices _inputServices;
         private IGroundDetector _groundDetector;
         
@@ -25,19 +29,24 @@ namespace Actors.Actors
         private StickmanAnimator _stickmanAnimator;
         private IVibrate _vibrate;
         private IGoldLootService _goldLootService;
+        private ISkin _skinService;
+
+        private ImmortalAnimation _immortalAnimation;
+        private Coroutine _immortalTimeCoroutine;
 
 
         [Inject]
         private void Construct(IInputServices inputServices, 
             IGroundDetector groundDetector, 
             IVibrate vibrate, 
-            IGoldLootService goldLootService)
+            IGoldLootService goldLootService, ISkin skinService)
         {
             _inputServices = inputServices;
             _groundDetector = groundDetector;
             _vibrate = vibrate;
             _groundDetector.OnGrounded += OnGrounded;
             _goldLootService = goldLootService;
+            _skinService = skinService;
         }
 
         private void Start()
@@ -51,8 +60,9 @@ namespace Actors.Actors
             }
             
             _stickmanAnimator = GetComponentInChildren<StickmanAnimator>();
-            
             _groundDetector.EnableGroundChecker();
+
+            _immortalAnimation = GetComponent<ImmortalAnimation>();
         }
 
         private void Update()
@@ -99,6 +109,12 @@ namespace Actors.Actors
             if(IsTravel) return;
             if(_isGrounded == false) return;
             if(_isAttacked) return;
+
+            if(_immortalTimeCoroutine != null)
+                return;
+                       
+            
+            _immortalTimeCoroutine = StartCoroutine(ImmortalState());
             
             _isAttacked = true;
             IsAttacked = true;
@@ -131,21 +147,35 @@ namespace Actors.Actors
 
         public void LoadProgress(PlayerProgress progress)
         {
-            ISkin skin = GetComponent<ISkin>();
-            
-            progress.SkinName = skin.GetSkinData.SkinName;
+            progress.SkinName = _skinService.GetSkinData.SkinName;
         }
 
         public void UpdateProgress(PlayerProgress progress)
         {
             progress.Gold += GoldService.CurrentCount;
-            progress.SkinName = GetComponent<ISkin>().GetSkinData.SkinName;
+            progress.SkinName = _skinService.GetSkinData.SkinName;
         }
 
         public override void YouWin()
         {
             _stickmanAnimator.PlayWinner();
             base.YouWin();
+        }
+
+        private IEnumerator ImmortalState()
+        {
+            _immortalAnimation.RunAnim(_immortalTime);
+            
+            float timer = _immortalTime;
+
+            while (timer >= 0.0f)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+
+            _immortalTimeCoroutine = null;
+            _immortalAnimation.StopAnim();
         }
 
         private void OnDestroy()

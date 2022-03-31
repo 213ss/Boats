@@ -10,6 +10,7 @@ using Infrastructure.Services.Islands;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Screen;
 using Infrastructure.Services.SkinChanger;
+using Infrastructure.Services.UIDirect;
 using Infrastructure.Services.Vibrate;
 using Logic;
 using Logic.Triggers;
@@ -32,6 +33,7 @@ namespace Zenject.MonoInstallers
         public ScreenService _screenService;
         public Vibrate _Vibrate;
         public GoldLootService _goldLootService;
+        public UIDirectToWorldObject _uiIndicatorService;
 
 
         public override void InstallBindings()
@@ -43,6 +45,7 @@ namespace Zenject.MonoInstallers
             
             UIFollowServicesInstaller();
             CameraFollowInstaller();
+            UIDirectionService();
 
             SkinChangeInstaller();
 
@@ -62,6 +65,7 @@ namespace Zenject.MonoInstallers
             SaveLoadService();
             VibrateService();
             GoldLoot();
+            SkinService();
         }
 
         private void GoldLoot()
@@ -72,6 +76,14 @@ namespace Zenject.MonoInstallers
                 .FromInstance(_goldLootService)
                 .AsSingle()
                 .NonLazy();
+        }
+        
+        private void SkinService()
+        {
+            Container
+                .Bind<ISkin>()
+                .To<Skin>()
+                .FromComponentInParents();
         }
 
         private void VibrateService()
@@ -179,6 +191,14 @@ namespace Zenject.MonoInstallers
                 .Bind<IUIFollow>()
                 .To<UIFollow>()
                 .FromInstance(_uiFollow)
+                .AsSingle().NonLazy();
+        }
+        private void UIDirectionService()
+        {
+            Container
+                .Bind<IUIIndicatorService>()
+                .To<UIDirectToWorldObject>()
+                .FromInstance(_uiIndicatorService)
                 .AsSingle().NonLazy();
         }
 

@@ -11,6 +11,7 @@ namespace Infrastructure.Data.ScriptableObjects
 
         [SerializeField] private AiDifficulty _aiDifficulty;
         [SerializeField] private float _baseTimeScanGoldTrigger;
+        [SerializeField] private float _baseTimePatrol;
         
         [Header("Attack parameters")]
         [SerializeField] private float _chanceAttack;
@@ -79,6 +80,31 @@ namespace Infrastructure.Data.ScriptableObjects
             }
             
             return false;
+        }
+
+        public float GetTimePatrol()
+        {
+            float delta = _baseTimePatrol;
+            
+            switch (_aiDifficulty)
+            {
+                case AiDifficulty.Lite:
+                    delta = _baseTimePatrol;
+                    break;
+                case AiDifficulty.Medium:
+                    delta -= _baseTimePatrol / 4.0f;
+                    break;
+                case AiDifficulty.Hard:
+                    delta -= _baseTimePatrol / 3.0f;
+                    break;
+                case AiDifficulty.Madman:
+                    delta -= _baseTimePatrol / 1.5f;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return delta;
         }
 
         public bool IsChanceAttack()

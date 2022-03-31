@@ -17,6 +17,7 @@ namespace Logic
 
     public class UIFollow : MonoBehaviour, IUIFollow
     {
+        [SerializeField] private Camera _camera;
         [SerializeField] private Camera _uiCamera;
         [SerializeField] private RectTransform _containerUI;
 
@@ -63,10 +64,10 @@ namespace Logic
                         continue;
                     }
                     
-                    Vector2 positionOnScreen = RectTransformUtility.WorldToScreenPoint(_uiCamera, follow.Key.position);
-                    Vector2 anchoredPosition;
-                    RectTransformUtility.ScreenPointToLocalPointInRectangle(_containerUI, positionOnScreen, null,
-                        out anchoredPosition);
+                    Vector2 positionOnScreen = RectTransformUtility.WorldToScreenPoint(_camera, follow.Key.position);
+
+                    RectTransformUtility.ScreenPointToLocalPointInRectangle(_containerUI, positionOnScreen, _uiCamera,
+                        out Vector2 anchoredPosition);
 
                     follow.Value.Following.anchoredPosition = anchoredPosition + follow.Value.Offset;
                 }

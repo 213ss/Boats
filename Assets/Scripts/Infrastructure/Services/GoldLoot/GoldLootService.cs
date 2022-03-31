@@ -1,8 +1,10 @@
 ﻿using Actors;
 using Infrastructure.Factory;
+using Infrastructure.Services.AnalyticsServices;
 using Infrastructure.Services.Islands;
 using Logic.GoldLoot;
 using Logic.Island;
+using Scripts.Infrastructure.Data;
 using Scripts.Infrastructure.Services.Gold;
 using UnityEngine;
 using Zenject;
@@ -48,6 +50,11 @@ namespace Infrastructure.Services.GoldLoot
             
             goldChanger.SubstractionGold(percent);
             
+            if (owner.ActorTeam == Team.Player_0)
+            {
+                GameAnalyticsService.Instance.EventDropResource(percent, DropGoldType.TakeDamage);
+            }
+
             float goldPerShard = percent / _shardCount;
 
             for (int i = 0; i < _shardCount; ++i)
