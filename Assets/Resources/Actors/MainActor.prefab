@@ -96,6 +96,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _decalTransform: {fileID: 1575230911}
   _shovelWeapon: {fileID: 6608493392980597302}
+--- !u!1 &2356832184960219815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6774706276106542205}
+  m_Layer: 0
+  m_Name: GroundDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6774706276106542205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2356832184960219815}
+  m_LocalRotation: {x: 0.1432352, y: -0, z: -0, w: 0.98968875}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4845112060291433084}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 16.47, y: 0, z: 0}
 --- !u!1 &3759671506440249448
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +198,7 @@ Transform:
   - {fileID: 3208273591315929368}
   - {fileID: 4107308535246328138}
   - {fileID: 1575230911}
+  - {fileID: 6774706276106542205}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -241,6 +272,10 @@ MonoBehaviour:
   _burstGoldPrefab: {fileID: 648729588280796131, guid: 4275934f72363694c980d31f3a46858f, type: 3}
   _holeDistanceOffset: 2.2
   _holeDistanceFromGround: -0.5
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _groundDirection: {fileID: 6774706276106542205}
 --- !u!114 &8494209166041117196
 MonoBehaviour:
   m_ObjectHideFlags: 0

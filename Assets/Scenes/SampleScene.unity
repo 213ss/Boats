@@ -351,7 +351,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b69b03b8ce979bb48a622e32c627b29e, type: 2}
+  - {fileID: 2100000, guid: c45f2ae2490de9f4483908366d09ed64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -820,6 +820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Services
       objectReference: {fileID: 0}
+    - target: {fileID: 2348195026098301179, guid: 729292a4fa3e63b4faa05225bf96ec2e, type: 3}
+      propertyPath: _shardCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2348195026485747356, guid: 729292a4fa3e63b4faa05225bf96ec2e, type: 3}
       propertyPath: _imageObject
       value: 
@@ -1080,7 +1084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0.13, y: 3.31, z: -0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 325884316}

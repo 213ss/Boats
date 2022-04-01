@@ -37,6 +37,8 @@ namespace Logic.Weapon.Weapons
         [Header("Shovel hole parameters")]
         [SerializeField] private float _holeDistanceOffset;
         [SerializeField] private float _holeDistanceFromGround;
+        [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private Transform _groundDirection;
 
         private bool _isDetectEnemy;
         
@@ -177,6 +179,8 @@ namespace Logic.Weapon.Weapons
 
         private IEnumerator Excavation()
         {
+            if (IsExcavateOnGround() == false) yield break;
+            
             _stickmanAnimator.StartDigging();
             
             float currentTime = _excavationTime;
@@ -206,9 +210,9 @@ namespace Logic.Weapon.Weapons
                 IsStayInGoldArea = false;
             }
 
-            OnExcavated?.Invoke();
-            
             IsExcavated = false;
+            OnExcavated?.Invoke();
+
             _excavationCoroutine = null;
         }
 
@@ -220,7 +224,7 @@ namespace Logic.Weapon.Weapons
                 _goldArea = null;
             }
 
-            _ownerActor.GoldService.AddGold(_goldPrize);
+            _ownerActor.GoldService.AddGoldDelay(_goldPrize, Mathf.RoundToInt(_goldPrize), 0.1f);
             _goldPrize = 0.0f;
         }
 
@@ -251,6 +255,17 @@ namespace Logic.Weapon.Weapons
             _enemyActor = null;
         }
 
+        private bool IsExcavateOnGround()
+        {
+            Ray ray = new Ray(_ownerActor.ActorTransform.position, _groundDirection.forward);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 25.0f, _groundLayer))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void OnDestroy()
         {
             _actorDetector.OnDetectActor -= DetectActor;
@@ -260,5 +275,15 @@ namespace Logic.Weapon.Weapons
         {
             _actorDetector.OnDetectActor -= DetectActor;
         }
+        
+#if UNITY_EDITOR
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(transform.position, _groundDirection.forward * 25.0f);
+        }
+
+#endif
     }
 }
