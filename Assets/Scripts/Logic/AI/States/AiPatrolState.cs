@@ -44,6 +44,11 @@ namespace Logic.AI.States
             
             while (timePatrol >= 0.0f)
             {
+                if (CheckGoldTravel())
+                {
+                    _stateMachine.Enter<AiGoToNextIslandState>();
+                }
+                
                 timePatrol -= Time.deltaTime;
 
                 if (_movement.IsDisableMovement == false)
@@ -74,6 +79,11 @@ namespace Logic.AI.States
         private Vector3 GetRandomPoint()
         {
             return _aiOwner.CurrentIsland.GetRandomPointInIsland();
+        }
+
+        private bool CheckGoldTravel()
+        {
+            return _aiOwner.GoldService.CurrentCount >= _aiOwner.CurrentIsland.CostDelivery;
         }
     }
 }

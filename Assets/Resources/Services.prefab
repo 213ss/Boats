@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _percentDrop: 50
-  _shardCount: 3
+  _shardCount: 1
 --- !u!1 &2348195026319560504
 GameObject:
   m_ObjectHideFlags: 0

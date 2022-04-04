@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 9190841931322454437}
   - component: {fileID: 9184741184390017365}
   - component: {fileID: 7489918284827497698}
+  - component: {fileID: 3563668504196451063}
   m_Layer: 7
   m_Name: MainActor
   m_TagString: Player
@@ -269,7 +270,7 @@ MonoBehaviour:
   _forwardPower: 4
   _upPower: 5
   _excavationTime: 0.5
-  _burstGoldPrefab: {fileID: 648729588280796131, guid: 4275934f72363694c980d31f3a46858f, type: 3}
+  _vfxGoldBurst: {fileID: 3563668504196451063}
   _holeDistanceOffset: 2.2
   _holeDistanceFromGround: -0.5
   _groundLayer:
@@ -396,6 +397,23 @@ MonoBehaviour:
   _transparentMaterial: {fileID: 2100000, guid: b4e74f66f2a71d84f8c1349823a15c53, type: 2}
   _interval: 0.3
   _alphaPower: 0.8
+--- !u!114 &3563668504196451063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845112060291433072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7808469a67ba4460b20a521d762be5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delay: 0.7
+  _lifeTime: 0.3
+  _easeType: 16
+  _offset: {x: 0, y: 1, z: 0}
+  _coinVFXPrefab: {fileID: 6371416021992309491, guid: 62284514ef619c249867a6cb3ac37829, type: 3}
 --- !u!1 &5262003993084402407
 GameObject:
   m_ObjectHideFlags: 0

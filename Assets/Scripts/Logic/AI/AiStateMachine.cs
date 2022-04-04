@@ -24,7 +24,6 @@ namespace Logic.AI
                 [typeof(AiDroppedOutGameState)] = new AiDroppedOutGameState(stateMachine: this, aiOwner),
                 [typeof(AiTravelState)] = new AiTravelState(stateMachine: this, aiOwner, coroutineRunner),
                 [typeof(AiCoinSearch)] = new AiCoinSearch(stateMachine: this, diContainer, coroutineRunner, aiOwner),
-                [typeof(AiSearchEnemyGoldState)] = new AiSearchEnemyGoldState(this, aiOwner, coroutineRunner),
                 [typeof(AiPatrolState)] = new AiPatrolState(this, diContainer, aiOwner, coroutineRunner),
                 [typeof(AiWinnerState)] = new AiWinnerState(),
                 [typeof(AiWaitState)] = new AiWaitState()

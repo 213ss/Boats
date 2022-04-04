@@ -72,7 +72,7 @@ namespace Logic.AI.States
                             {
                                 if (_island.GetCountActorExistGold() > 0)
                                 {
-                                    _stateMachine.Enter<AiSearchEnemyGoldState>();
+                                    _stateMachine.Enter<AiPatrolState>();
                                 }
                                 else
                                 {
@@ -97,7 +97,7 @@ namespace Logic.AI.States
                     {
                         if (_island.GetCountActorExistGold() > 0)
                         {
-                            _stateMachine.Enter<AiSearchEnemyGoldState>();
+                            _stateMachine.Enter<AiPatrolState>();
                         }
                         else
                         {

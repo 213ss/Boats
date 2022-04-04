@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.16788329, g: 0.21073541, b: 0.2899403, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: def4a9c5fb8297442af11bcdda52c83f, type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 9ad2e95b55ff49a45af322e05471ccac, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawn_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6248511632197181776, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6248511632197181790, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -578,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _costDelivery
-      value: 256
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _countTriggers
@@ -590,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 20510205}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _goldTriggerPrize
-      value: 128
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382495, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: m_Name
@@ -819,10 +823,6 @@ PrefabInstance:
     - target: {fileID: 2348195026019566685, guid: 729292a4fa3e63b4faa05225bf96ec2e, type: 3}
       propertyPath: m_Name
       value: Services
-      objectReference: {fileID: 0}
-    - target: {fileID: 2348195026098301179, guid: 729292a4fa3e63b4faa05225bf96ec2e, type: 3}
-      propertyPath: _shardCount
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2348195026485747356, guid: 729292a4fa3e63b4faa05225bf96ec2e, type: 3}
       propertyPath: _imageObject
@@ -1065,7 +1065,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1084,7 +1084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0.13, y: 3.31, z: -0.22}
+  m_LocalPosition: {x: 0.42, y: 4.01, z: -0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 325884316}
@@ -1328,6 +1328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawn_2
       objectReference: {fileID: 0}
+    - target: {fileID: 6248511632197181776, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6248511632197181790, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1444,6 +1448,10 @@ PrefabInstance:
     - target: {fileID: 6248511632197181776, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
       propertyPath: m_Name
       value: EnemySpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248511632197181776, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6248511632197181790, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
       propertyPath: m_RootOrder
@@ -2162,6 +2170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawn_3
       objectReference: {fileID: 0}
+    - target: {fileID: 6248511632197181776, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6248511632197181790, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2350,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _costDelivery
-      value: 128
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _countTriggers
@@ -2362,7 +2374,7 @@ PrefabInstance:
       objectReference: {fileID: 368792191}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _goldTriggerPrize
-      value: 64
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382495, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: m_Name

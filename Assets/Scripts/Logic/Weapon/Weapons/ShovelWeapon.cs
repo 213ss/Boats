@@ -4,6 +4,7 @@ using Actors;
 using Damageable;
 using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
+using Infrastructure.Services.VFXGoldBurst;
 using Infrastructure.Services.Vibrate;
 using Logic.Triggers;
 using Scripts.Infrastructure.Data;
@@ -32,7 +33,7 @@ namespace Logic.Weapon.Weapons
         [SerializeField] private float _excavationTime;
 
         [Header("VFX")]
-        [SerializeField] private GameObject _burstGoldPrefab;
+        [SerializeField] private VFXGoldBurst _vfxGoldBurst;
         
         [Header("Shovel hole parameters")]
         [SerializeField] private float _holeDistanceOffset;
@@ -71,6 +72,8 @@ namespace Logic.Weapon.Weapons
             _stickmanAnimator = GetComponentInChildren<StickmanAnimator>();
             _ownerActor = GetComponentInParent<Actor>();
             _actorDetector.EnableDetect();
+            
+            _vfxGoldBurst.OnMoveToTargetEnd += AddGoldToActor;
         }
 
         public float GetHolDistance()
@@ -205,8 +208,8 @@ namespace Logic.Weapon.Weapons
 
             if (IsStayInGoldArea)
             {
-                AddGoldToActor();
-                CreateGoldVfxAt(holePosition);
+                //AddGoldToActor();
+                _vfxGoldBurst.PlayGoldVFX(holePosition, Mathf.RoundToInt(_goldPrize), _ownerActor);
                 IsStayInGoldArea = false;
             }
 
@@ -224,14 +227,8 @@ namespace Logic.Weapon.Weapons
                 _goldArea = null;
             }
 
-            _ownerActor.GoldService.AddGoldDelay(_goldPrize, Mathf.RoundToInt(_goldPrize), 0.1f);
+            _ownerActor.GoldService.AddGoldDelay(_goldPrize, Mathf.RoundToInt(_goldPrize), 0.01f);
             _goldPrize = 0.0f;
-        }
-
-        private void CreateGoldVfxAt(Vector3 position)
-        {
-            GameObject vfxBurstGold = Instantiate(_burstGoldPrefab, position, Quaternion.identity);
-            Destroy(vfxBurstGold.gameObject, 2.0f);
         }
 
         private void CreateHoleAt(Vector3 position)
@@ -269,6 +266,7 @@ namespace Logic.Weapon.Weapons
         private void OnDestroy()
         {
             _actorDetector.OnDetectActor -= DetectActor;
+            _vfxGoldBurst.OnMoveToTargetEnd -= AddGoldToActor;
         }
 
         private void OnDisable()

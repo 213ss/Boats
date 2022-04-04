@@ -52,7 +52,7 @@ namespace Logic
             return null;
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (_followObjects.Count > 0)
             {

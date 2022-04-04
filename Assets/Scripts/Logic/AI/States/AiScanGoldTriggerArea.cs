@@ -59,7 +59,7 @@ namespace Logic.AI.States
             {
                 if (CheckGoldToTravel())
                 {
-                    _stateMachine.Enter<AiTravelState>();
+                    _stateMachine.Enter<AiGoToNextIslandState>();
                     yield break;
                 }
                 
