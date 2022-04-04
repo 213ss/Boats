@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Coins.meta
 guid: b368ae9375e40744b810e509f52e9201
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
+========
+guid: aaadce92669b1254db4904d1026b024a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+>>>>>>>> d9101288bf9f3bcb8b5f146f6a931cd8e07b2cf2:Assets/Lowpoly Style/Alpine Woodland/DemoScene/Woodlands_PPP_V2_Linear.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

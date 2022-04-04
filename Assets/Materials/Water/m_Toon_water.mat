@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _DepthColorDistance: 0.5
-    - _DepthDistance: 0.5
+    - _DepthDistance: 0.05
     - _FoamSmooth: 0.5
     - _FoamSpread: 2.81
     - _FoamStrength: 0.8
