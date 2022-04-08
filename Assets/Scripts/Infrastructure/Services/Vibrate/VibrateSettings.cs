@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -10,7 +9,6 @@ namespace Infrastructure.Services.Vibrate
         [SerializeField] private Image _targetImage;
         [SerializeField] private Sprite _onVibrate;
         [SerializeField] private Sprite _offVibrate;
-        [SerializeField] private TMP_Text _textSettings;
 
 
         private IVibrate _vibrate;
@@ -40,12 +38,10 @@ namespace Infrastructure.Services.Vibrate
             if (_vibrate.IsEnableVibrate)
             {
                 _targetImage.sprite = _onVibrate;
-                _textSettings.text = "Haptic: on";
             }
             else
             {
                 _targetImage.sprite = _offVibrate;
-                _textSettings.text = "Haptic: off";
             }
         }
     }

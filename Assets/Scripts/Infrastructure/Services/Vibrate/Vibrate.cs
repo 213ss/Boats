@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace Infrastructure.Services.Vibrate
@@ -14,6 +13,7 @@ namespace Infrastructure.Services.Vibrate
         private void Start()
         {
             IsEnableVibrate = true;
+            Vibration.Init();
         }
 
         private void Update()
@@ -33,16 +33,7 @@ namespace Infrastructure.Services.Vibrate
 
         public void PlayVibrate(float time)
         {
-            if(_virate == null)
-                _virate = StartCoroutine(VibratePlay(time));
-        }
-
-        private IEnumerator VibratePlay(float time)
-        {
-            _isVibrate = true;
-            yield return new WaitForSeconds(time);
-            _isVibrate = false;
-            _virate = null;
+            Vibration.VibratePop();
         }
     }
 }

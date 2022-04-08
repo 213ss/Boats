@@ -115,7 +115,7 @@ namespace Logic.Weapon.Weapons
             if (_strikeCoroutine == null)
             {
                 if(_ownerActor.ActorTeam == Team.Player_0)
-                    _vibrate.PlayVibrate(0.4f);
+                    //_vibrate.PlayVibrate(0.4f);
                 
                 _strikeCoroutine = StartCoroutine(ShovelStrike());
             }
@@ -194,8 +194,8 @@ namespace Logic.Weapon.Weapons
                 yield return null;
             }
             
-            if(_ownerActor.ActorTeam == Team.Player_0)
-                _vibrate.PlayVibrate(0.4f);
+            //if(_ownerActor.ActorTeam == Team.Player_0)
+                //_vibrate.PlayVibrate(0.4f);
             
             _stickmanAnimator.StopDigging();
 
@@ -208,7 +208,6 @@ namespace Logic.Weapon.Weapons
 
             if (IsStayInGoldArea)
             {
-                //AddGoldToActor();
                 _vfxGoldBurst.PlayGoldVFX(holePosition, Mathf.RoundToInt(_goldPrize), _ownerActor);
                 IsStayInGoldArea = false;
             }
@@ -227,7 +226,7 @@ namespace Logic.Weapon.Weapons
                 _goldArea = null;
             }
 
-            _ownerActor.GoldService.AddGoldDelay(_goldPrize, Mathf.RoundToInt(_goldPrize), 0.01f);
+            _ownerActor.GoldService.AddGoldDelay(_goldPrize, Mathf.RoundToInt(_goldPrize), 0.02f);
             _goldPrize = 0.0f;
         }
 

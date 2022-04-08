@@ -3,9 +3,11 @@ using Actors;
 using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
 using Infrastructure.Services.Islands;
+using Infrastructure.Services.UIDirect;
 using Logic.Boat;
 using Logic.GoldLoot;
 using Logic.Triggers;
+using Scripts.Infrastructure.Data;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -20,11 +22,10 @@ namespace Logic.Island
         {
             get { return _finalPoint; }
         }
-        
+
         public int CostDelivery => _costDelivery;
         public Vector3 PierPosition => _boatsPier.position;
-        public Transform PiersTransform => _boatsPier;
-        
+
         [Header("Trigger parameters")]
         [SerializeField] private int _countTriggers;
         [SerializeField] private int _goldTriggerPrize;
@@ -43,6 +44,7 @@ namespace Logic.Island
         [Header("Boats spawn, max count equal Boats Points length")] 
         [SerializeField] private int _boatsCount;
         [SerializeField] private Transform[] _boatsPoints;
+        [SerializeField] private UIDirectToWorldObject[] _indicators;
         
         private IGameFactory _gameFactory;
         private IIslandService _islandService;
@@ -66,7 +68,7 @@ namespace Logic.Island
             _islandService = diContainer.Resolve<IIslandService>();
         }
         
-        private void Start()
+        private void Awake()
         {
             if(_spawnTriggerTransform == null)
                 _spawnTriggerTransform = GetComponent<Transform>();
@@ -86,9 +88,20 @@ namespace Logic.Island
 
             var successDelivery = boat.TryStartDelivery(actor);
 
-            if(successDelivery)
+            if (successDelivery)
+            {
                 _actorsDelivry.Add(actor);
-                
+
+                if (actor.ActorTeam == Team.Player_0)
+                {
+                    HideIndicators();
+                }
+                else
+                {
+                    boat.HideIndicator();
+                }
+            }
+
             return successDelivery;
         }
 
@@ -110,6 +123,22 @@ namespace Logic.Island
         {
             ClearNullGoldLoots();
             return _goldLoots.Count;
+        }
+
+        public void ShowIndicators()
+        {
+            for (int i = 0; i < _boats.Length; i++)
+            {
+                _boats[i].ShowIndicator();
+            }
+        }
+
+        public void HideIndicators()
+        {
+            for (int i = 0; i < _boats.Length; i++)
+            {
+                _boats[i].HideIndicator();
+            }
         }
 
         private void ClearNullGoldLoots()
@@ -137,26 +166,6 @@ namespace Logic.Island
         public void AddActorToIsland(Actor actor)
         {
             _actorsInInsland.Add(actor);
-        }
-
-        public Actor[] GetActorsInIsland()
-        {
-            return _actorsInInsland.ToArray();
-        }
-
-        public Actor[] GetActorsInIslandExistGold()
-        {
-            List<Actor> goldActors = new List<Actor>();
-
-            foreach (var actor in _actorsInInsland)
-            {
-                if (actor.GoldService.CurrentCount >= 1)
-                {
-                    goldActors.Add(actor);
-                }
-            }
-
-            return goldActors.ToArray();
         }
 
         public int GetCountActorExistGold()
@@ -213,9 +222,9 @@ namespace Logic.Island
             return null;
         }
 
-        private void StartDeliveryActor(Actor passanger)
+        private void StartDeliveryActor(Actor passenger)
         {
-            _islandService.SetActorToNextIsland(passanger);
+            _islandService.SetActorToNextIsland(passenger);
         }
 
         public int GetCountActiveTriggers()
@@ -230,9 +239,10 @@ namespace Logic.Island
             return count;
         }
 
-        private void DropOffActor(Actor passanger)
+        private void DropOffActor(Actor passenger)
         {
-            
+            if(passenger.ActorTeam == Team.Player_0)
+                passenger.CurrentIsland.ShowIndicators();
         }
 
         private void GenerateBoats()
@@ -246,6 +256,7 @@ namespace Logic.Island
                 _boats[i] = _gameFactory.CreateBoat(_boatsPoints[i].position);
                 _boats[i].transform.rotation = _boatsPoints[i].rotation;
                 _boats[i].transform.SetParent(_boatsPoints[i]);
+                _boats[i].SetIndicator(_indicators[i]);
                 
                 _boats[i].SetCostDelivery(_costDelivery);
                 _boats[i].SetDestinationPoint(_destinationPoint);

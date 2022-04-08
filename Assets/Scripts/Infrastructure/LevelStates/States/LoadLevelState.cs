@@ -2,12 +2,12 @@
 using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
 using Infrastructure.Services.Islands;
+using Infrastructure.Services.LevelService;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.SkinChanger;
 using Logic.UI.GoldWidget;
 using Scripts.Infrastructure.Services.Camera;
 using Scripts.Infrastructure.Services.Gold;
-using Scripts.Logic;
 using UnityEngine;
 using Zenject;
 
@@ -23,6 +23,7 @@ namespace Infrastructure.LevelStates.States
         
         private readonly ISaveLoadService _saveLoadService;
         private readonly IPersistenceProgressServices _persistanceProgress;
+        private readonly ILevelService _levelService;
 
         public LoadLevelState(StateMachine stateMachine, DiContainer diContainer)
         {
@@ -33,6 +34,7 @@ namespace Infrastructure.LevelStates.States
             _islandService = diContainer.Resolve<IIslandService>();
             _saveLoadService = diContainer.Resolve<ISaveLoadService>();
             _persistanceProgress = diContainer.Resolve<IPersistenceProgressServices>();
+            _levelService = diContainer.Resolve<ILevelService>();
         }
 
         public void Enter()
@@ -40,7 +42,9 @@ namespace Infrastructure.LevelStates.States
             var spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
             var mainActor = _gameFactory.CreateGameObject(AssetsPath.MainActorPath, spawnPoint.transform.position);
             
-            GameObject.FindObjectOfType<PlayerGoldWidget>().SetGoldService(mainActor.GetComponent<IGold>());
+            _levelService.SetPlayerActor(mainActor.GetComponent<Actor>());
+            
+            Object.FindObjectOfType<PlayerGoldWidget>().SetGoldService(mainActor.GetComponent<IGold>());
             
             _cameraFollow.SetFollow(mainActor.transform);
             

@@ -18,6 +18,11 @@ namespace Infrastructure.Services.Islands
                 _allIslands = FindObjectsOfType<BaseIsland>();
         }
 
+        private void Start()
+        {
+            _allIslands[0].ShowIndicators();
+        }
+
         public void SetActorToStartIsland(Actor actor)
         {
             _allIslands[0].AddActorToIsland(actor);

@@ -70,10 +70,12 @@ public class StickmanAnimator : MonoBehaviour, IAnimationStateReader
         _animator.SetBool(_digging, false);
     }
 
-    public void PlayWinner()
+    public void PlayWinner(int animIndex)
     {
-        _animator.SetInteger(_winnerState, Random.Range(0, 3));
+        _animator.SetInteger(_winnerState, animIndex);
         _animator.SetTrigger(_winner);
+        
+        StopMoving();
     }
 
     public void EnterState(int stateHash)

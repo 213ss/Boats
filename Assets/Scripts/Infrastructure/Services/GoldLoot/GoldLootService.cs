@@ -35,25 +35,9 @@ namespace Infrastructure.Services.GoldLoot
             if(gold <= 0.0f) return;
             
             BaseIsland island = _islandService.TryGetIslandForActor(owner);
-
             
-            /*if (_shardCount < percent)
-            {
-                goldChanger.SubstractionGold(gold);
-                GoldLoots loots = _gameFactory.CreateGoldLoot(spawnPosition);
-
-                island.AddGoldLoots(loots);
-                loots.SetGold(gold);
-                loots.AddForce();
-                return;
-            }*/
             
             goldChanger.SubstractionGold(percent);
-            
-            if (owner.ActorTeam == Team.Player_0)
-            {
-                GameAnalyticsService.Instance.EventDropResource(percent, DropGoldType.TakeDamage);
-            }
 
             float goldPerShard = 1.0f;
             int countShards = Mathf.RoundToInt(percent);

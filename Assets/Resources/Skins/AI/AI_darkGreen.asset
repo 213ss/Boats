@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfb39e5673741be8650dd12037aa6e4, type: 3}
   m_Name: AI_darkGreen
   m_EditorClassIdentifier: 
-  _skinName: darkGreen
+  _skinName: DarkGreen
   _skinDescription: 
   _skinCost: 0
-  _skinPrefab: {fileID: 1009278787812644061, guid: 6fbf362ced95d4c488f744582c9e8715, type: 3}
+  _skinPrefab: {fileID: 9172423010708759618, guid: b0aad44f5f38f35458a7ec66668e9861, type: 3}
