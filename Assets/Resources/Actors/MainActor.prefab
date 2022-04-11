@@ -202,6 +202,7 @@ Transform:
   - {fileID: 4107308535246328138}
   - {fileID: 1575230911}
   - {fileID: 6774706276106542205}
+  - {fileID: 6509191579411471707}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -354,6 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7b98eda4a84a1ba20a17ac19228ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _glowVFX: {fileID: 6509191579396295409}
 --- !u!136 &9190841931322454437
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -500,3 +502,70 @@ MonoBehaviour:
   _goldWidgetPrefab: {fileID: 111384904941534516, guid: c58c51b2768fe2b449dd5a06584350bb, type: 3}
   _offsetWidget: {x: -15, y: 55}
   _ownerTransform: {fileID: 4107308535246328138}
+--- !u!1001 &4824250315905371254
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4845112060291433084}
+    m_Modifications:
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776218545279263487, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+      propertyPath: m_Name
+      value: ActorGlowVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+--- !u!4 &6509191579411471707 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1776218545279193389, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+  m_PrefabInstance: {fileID: 4824250315905371254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6509191579396295409 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1776218545298491015, guid: f18c43ed4c4d0494497f36cedc23ce44, type: 3}
+  m_PrefabInstance: {fileID: 4824250315905371254}
+  m_PrefabAsset: {fileID: 0}

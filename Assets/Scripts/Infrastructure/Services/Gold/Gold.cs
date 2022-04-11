@@ -11,6 +11,8 @@ namespace Infrastructure.Services.Gold
         public event Action<float> OnGoldChange;
         
         public float CurrentCount => _currentCount;
+
+        [SerializeField] private ParticleSystem _glowVFX;
         
         private float _currentCount = 0;
 
@@ -18,7 +20,7 @@ namespace Infrastructure.Services.Gold
         public void AddGold(float amount)
         {
             if(amount <= 0) return;
-            
+
             _currentCount += amount;
             OnGoldChange?.Invoke(_currentCount);
         }
@@ -40,9 +42,12 @@ namespace Infrastructure.Services.Gold
         private IEnumerator ChangeDelayProcess(float goldCount, int countIteration, float intervalSeconds)
         {
             float part = goldCount / countIteration;
-            
+
             for (int i = 0; i < countIteration; i++)
             {
+                if(_glowVFX.isPlaying == false)
+                    _glowVFX.Play();
+                
                 AddGold(part);
                 yield return new WaitForSeconds(intervalSeconds);
             }
