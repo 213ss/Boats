@@ -8,7 +8,7 @@ namespace Infrastructure.Services.Islands
 {
     public class IslandService : MonoBehaviour, IIslandService
     {
-        public event Action<int> EventActorNewIsland; 
+        public event Action<int> EventActorNewIsland;
 
         [SerializeField] private BaseIsland[] _allIslands;
 
