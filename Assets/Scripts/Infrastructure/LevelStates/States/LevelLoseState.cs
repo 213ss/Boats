@@ -1,6 +1,7 @@
-﻿using Actors;
-using Infrastructure.Services.AnalyticsServices;
+﻿using System.Collections;
+using Actors;
 using Infrastructure.Services.Screen;
+using Scripts.Infrastructure;
 using UnityEngine;
 using Zenject;
 
@@ -8,13 +9,12 @@ namespace Infrastructure.LevelStates.States
 {
     public class LevelLoseState: ILevelState
     {
-        private readonly StateMachine _stateMachine;
+        private readonly ICoroutineRunner _coroutineRunner;
         private readonly IScreenService _screenService;
 
-        public LevelLoseState(StateMachine stateMachine, DiContainer diContainer)
+        public LevelLoseState(DiContainer diContainer, ICoroutineRunner coroutineRunner)
         {
-            _stateMachine = stateMachine;
-
+            _coroutineRunner = coroutineRunner;
             _screenService = diContainer.Resolve<IScreenService>();
         }
 
@@ -22,20 +22,28 @@ namespace Infrastructure.LevelStates.States
         {
             var actor = GameObject.FindGameObjectWithTag("Player").GetComponent<Actor>();
             actor.DisableActor();
-            
-            LevelLoseSendAnalyticsEvent();
-            _screenService.HideAllScreens();
-            _screenService.ShowLoseScreen();
-        }
 
-        private static void LevelLoseSendAnalyticsEvent()
-        {
-            GameAnalyticsService.Instance.PlayerProgress(LevelProgressingStatus.Fail, 0.0f);
+            _coroutineRunner.StartCoroutine(DelayShowScreen());
         }
+        
 
         public void Exit()
         {
             
+        }
+
+        private IEnumerator DelayShowScreen()
+        {
+            float timer = 2.0f;
+            
+            while (timer >= 0.0f)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            
+            _screenService.HideAllScreens();
+            _screenService.ShowLoseScreen();            
         }
     }
 }

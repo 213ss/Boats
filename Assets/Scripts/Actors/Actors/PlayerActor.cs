@@ -1,13 +1,16 @@
 using System.Collections;
 using Damageable;
 using Infrastructure.Data;
+using Infrastructure.Services.Girls;
 using Infrastructure.Services.GoldLoot;
 using Infrastructure.Services.GroundDetector;
 using Infrastructure.Services.InputServices;
 using Infrastructure.Services.SkinChanger;
 using Infrastructure.Services.Vibrate;
+using Logic.Decal;
 using Logic.ImmortalAnim;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 namespace Actors.Actors
@@ -15,6 +18,7 @@ namespace Actors.Actors
     public class PlayerActor : Actor, IApplyForce, ISavedProgress
     {
         [SerializeField] private float _immortalTime;
+        [SerializeField] private RadiusDecal _decal;
         
         private IInputServices _inputServices;
         private IGroundDetector _groundDetector;
@@ -33,13 +37,16 @@ namespace Actors.Actors
 
         private ImmortalAnimation _immortalAnimation;
         private Coroutine _immortalTimeCoroutine;
+        private IGirlsService _girlService;
+
+        private bool _goToFinalPoint;
 
 
         [Inject]
         private void Construct(IInputServices inputServices, 
             IGroundDetector groundDetector, 
             IVibrate vibrate, 
-            IGoldLootService goldLootService, ISkin skinService)
+            IGoldLootService goldLootService, ISkin skinService, IGirlsService girlsService)
         {
             _inputServices = inputServices;
             _groundDetector = groundDetector;
@@ -47,6 +54,7 @@ namespace Actors.Actors
             _groundDetector.OnGrounded += OnGrounded;
             _goldLootService = goldLootService;
             _skinService = skinService;
+            _girlService = girlsService;
         }
 
         private void Start()
@@ -69,6 +77,8 @@ namespace Actors.Actors
         {
             if (IsWin) return;
             if (IsDroppedOutGame) return;
+            if(_goToFinalPoint) return;
+            
         
             if(_isActive == false) return;
             
@@ -81,6 +91,12 @@ namespace Actors.Actors
                 _stickmanAnimator.StopMoving();
             }
             
+        }
+
+        public void GoToFinalPoint()
+        {
+            _goToFinalPoint = true;
+            _stickmanAnimator.Move();
         }
 
         public override void EnableActor()
@@ -122,7 +138,7 @@ namespace Actors.Actors
             _goldLootService.OnDropGold(GoldService, ActorTransform.position, this);
             
             
-            _vibrate.PlayVibrate(0.4f);
+            //_vibrate.PlayVibrate(0.4f);
             _movement.DisableMoveComponent();
             _rigidbody.isKinematic = false;
 
@@ -158,7 +174,13 @@ namespace Actors.Actors
 
         public override void YouWin()
         {
-            _stickmanAnimator.PlayWinner();
+            _decal.HideDecal();
+            GetComponent<NavMeshAgent>().enabled = false;
+
+            int randomIndex = Random.Range(0, 3);
+            _girlService.StartGirlDancing(randomIndex);
+            _stickmanAnimator.PlayWinner(randomIndex);
+            
             base.YouWin();
         }
 

@@ -63,6 +63,9 @@ namespace Logic.AI.States
                     }
                 }
                 
+                if(_aiOwner.CurrentIsland.GetCountGoldLoots() > 0)
+                    _stateMachine.Enter<AiCoinSearch>();
+                
                 yield return null;
             }
             

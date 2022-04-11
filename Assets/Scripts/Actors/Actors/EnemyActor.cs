@@ -1,6 +1,8 @@
 using Damageable;
+using Infrastructure.Services.Girls;
 using Infrastructure.Services.GoldLoot;
 using Infrastructure.Services.GroundDetector;
+using Infrastructure.Services.LevelService;
 using Logic.AI;
 using Logic.UI.GoldWidget;
 using Logic.Weapon;
@@ -29,18 +31,24 @@ namespace Actors.Actors
 
         private StickmanAnimator _stickmanAnimator;
         private IGoldLootService _goldLootService;
+        private IGirlsService _girlService;
 
         [Inject]
-        private void Construct(IGroundDetector groundDetector, IGoldLootService goldLootService)
+        private void Construct(IGroundDetector groundDetector, 
+            IGoldLootService goldLootService, 
+            ILevelService levelService, IGirlsService girlsService)
         {
+            _playerActor = levelService.PlayerActor as PlayerActor;
+            
             _groundDetector = groundDetector;
             _groundDetector.OnGrounded += OnGrounded;
             _goldLootService = goldLootService;
+
+            _girlService = girlsService;
         }
 
         private void Start()
         {
-            _playerActor = FindObjectOfType<PlayerActor>();
             _aiBrain = GetComponent<AiBrain>();
             _rigidbody = GetComponent<Rigidbody>();
             
@@ -59,7 +67,10 @@ namespace Actors.Actors
             if (_goldIndicator != null)
                 _goldIndicator.DisableIndicator();
             
-            _stickmanAnimator.PlayWinner();
+            int randomIndex = Random.Range(0, 3);
+            _girlService.StartGirlDancing(randomIndex);
+            _stickmanAnimator.PlayWinner(randomIndex);
+            
             base.YouWin();
             _movement.DisableMoveComponent();
             _groundDetector.DisableGroundChecker();

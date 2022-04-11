@@ -1,7 +1,7 @@
-﻿using Actors;
-using Infrastructure.Services.AnalyticsServices;
+﻿using System.Collections;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Screen;
+using Scripts.Infrastructure;
 using UnityEngine;
 using Zenject;
 
@@ -9,11 +9,13 @@ namespace Infrastructure.LevelStates.States
 {
     public class LevelWinState: ILevelState
     {
+        private readonly ICoroutineRunner _coroutineRunner;
         private readonly IScreenService _screenService;
         private readonly ISaveLoadService _saveLoadService;
 
-        public LevelWinState(DiContainer diContainer)
+        public LevelWinState(DiContainer diContainer, ICoroutineRunner coroutineRunner)
         {
+            _coroutineRunner = coroutineRunner;
             _screenService = diContainer.Resolve<IScreenService>();
             _saveLoadService = diContainer.Resolve<ISaveLoadService>();
         }
@@ -21,19 +23,26 @@ namespace Infrastructure.LevelStates.States
         public void Enter()
         {
             _saveLoadService.SaveProgress();
-            
-            GameObject actorObject = GameObject.FindGameObjectWithTag("Player");
-            Actor actor = actorObject.GetComponent<Actor>();
-            
-            GameAnalyticsService.Instance.PlayerProgress(LevelProgressingStatus.Complete, actor.GoldService.CurrentCount);
-            
-            _screenService.HideAllScreens();
-            _screenService.ShowWinScreen();
+            _coroutineRunner.StartCoroutine(DelayShowScreen());
         }
 
         public void Exit()
         {
             
+        }
+        
+        private IEnumerator DelayShowScreen()
+        {
+            float timer = 5.0f;
+            
+            while (timer >= 0.0f)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            
+            _screenService.HideAllScreens();
+            _screenService.ShowWinScreen();            
         }
     }
 }

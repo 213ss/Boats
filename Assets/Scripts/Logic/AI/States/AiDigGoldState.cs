@@ -60,7 +60,7 @@ namespace Logic.AI.States
 
         private IEnumerator ExcavatedCheck()
         {
-            var timer = 5.0f;
+            var timer = 3.0f;
             while (timer >= 0.0f)
             {
                 timer -= Time.deltaTime;

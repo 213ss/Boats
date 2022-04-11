@@ -15,5 +15,5 @@ MonoBehaviour:
   _aiDifficulty: 0
   _baseTimeScanGoldTrigger: 3
   _baseTimePatrol: 3
-  _chanceAttack: 8
+  _chanceAttack: 15
   _timeReloadsAttack: 2

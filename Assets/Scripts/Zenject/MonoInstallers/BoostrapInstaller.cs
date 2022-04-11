@@ -2,15 +2,17 @@
 using Enemy;
 using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
+using Infrastructure.Services.Confetti;
+using Infrastructure.Services.Girls;
 using Infrastructure.Services.Gold;
 using Infrastructure.Services.GoldLoot;
 using Infrastructure.Services.GroundDetector;
 using Infrastructure.Services.InputServices;
 using Infrastructure.Services.Islands;
+using Infrastructure.Services.LevelService;
 using Infrastructure.Services.SaveLoad;
 using Infrastructure.Services.Screen;
 using Infrastructure.Services.SkinChanger;
-using Infrastructure.Services.UIDirect;
 using Infrastructure.Services.Vibrate;
 using Logic;
 using Logic.Triggers;
@@ -33,7 +35,9 @@ namespace Zenject.MonoInstallers
         public ScreenService _screenService;
         public Vibrate _Vibrate;
         public GoldLootService _goldLootService;
-        public UIDirectToWorldObject _uiIndicatorService;
+        public LevelService _LevelService;
+        public GirlsService _girlService;
+        public ConfettiService _confetti;
 
 
         public override void InstallBindings()
@@ -42,10 +46,12 @@ namespace Zenject.MonoInstallers
             
             AssetProviderInstalls();
             GameFactoryInstalls();
+            LevelService();
+            GirlsService();
+            Confetti();
             
             UIFollowServicesInstaller();
             CameraFollowInstaller();
-            UIDirectionService();
 
             SkinChangeInstaller();
 
@@ -193,14 +199,6 @@ namespace Zenject.MonoInstallers
                 .FromInstance(_uiFollow)
                 .AsSingle().NonLazy();
         }
-        private void UIDirectionService()
-        {
-            Container
-                .Bind<IUIIndicatorService>()
-                .To<UIDirectToWorldObject>()
-                .FromInstance(_uiIndicatorService)
-                .AsSingle().NonLazy();
-        }
 
         private void ActorDetectorInstaller()
         {
@@ -229,8 +227,38 @@ namespace Zenject.MonoInstallers
                 .AsSingle()
                 .NonLazy();
         }
+        
+        private void LevelService()
+        {
+            Container
+                .Bind<ILevelService>()
+                .To<LevelService>()
+                .FromInstance(_LevelService)
+                .AsSingle()
+                .NonLazy();
+        }
+        
+        private void GirlsService()
+        {
+            Container
+                .Bind<IGirlsService>()
+                .To<GirlsService>()
+                .FromInstance(_girlService)
+                .AsSingle()
+                .NonLazy();
+        }
+        
+        private void Confetti()
+        {
+            Container
+                .Bind<IConfettiService>()
+                .To<ConfettiService>()
+                .FromInstance(_confetti)
+                .AsSingle()
+                .NonLazy();
+        }
 
-        public void InputServiceInstaller()
+        private void InputServiceInstaller()
         {
             Container
                 .Bind<IInputServices>()

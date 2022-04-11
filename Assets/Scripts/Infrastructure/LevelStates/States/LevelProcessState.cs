@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using Actors;
-using Infrastructure.Services.AnalyticsServices;
 using Scripts.Infrastructure;
 using UnityEngine;
 
@@ -22,8 +21,6 @@ namespace Infrastructure.LevelStates.States
 
         public void Enter()
         {
-            LevelStartSendAnalyticsEvent();
-            
             FindPlayerActor();
             StartCheckLevelState();
             
@@ -34,11 +31,6 @@ namespace Infrastructure.LevelStates.States
         {
             _coroutineRunner.StopCoroutine(_playerConditionCoroutine);
             DisableAllActors();
-        }
-
-        private static void LevelStartSendAnalyticsEvent()
-        {
-            GameAnalyticsService.Instance.PlayerProgress(LevelProgressingStatus.Start, 0.0f);
         }
 
         private void FindPlayerActor()

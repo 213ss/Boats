@@ -35,7 +35,8 @@ namespace Infrastructure.Services.AnalyticsServices
                 Instance = this;
                 GameAnalytics.Initialize();
                 GameAnalytics.StartSession();
-                DontDestroyOnLoad(this);   
+                
+                DontDestroyOnLoad(this);
             }
             else
             {

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using Actors;
+using Infrastructure.Services.LevelService;
 using Infrastructure.Services.UIDirect;
+using Logic.MovementFinalPoint;
 using Logic.UI.GoldWidget;
 using Scripts.Infrastructure.Data;
 using Scripts.Infrastructure.Services.Gold;
@@ -21,25 +23,25 @@ namespace Logic.Boat
         [SerializeField] private float _costDelivery;
         [SerializeField] private float _dropOffsetDistance = 16.0f;
         [SerializeField] private Transform _passengerPoint;
- 
 
         [Header("Maybe is null")] 
         [SerializeField] private NavMeshAgent _agent;
+
         [SerializeField] private Transform _thisTransform;
         [SerializeField] private GoldCountIndicator _goldCountIndicator;
 
+        private UIDirectToWorldObject _indicator;
         private Actor _passenger;
         private Transform _destinationPoint;
         private IGoldChanger _gold;
-        private IUIIndicatorService _uiIndicatorService;
+        private ILevelService _levelService;
 
         [Inject]
-        private void Construct(IUIIndicatorService uiIndicatorService)
+        public void Construct(ILevelService levelService)
         {
-            _uiIndicatorService = uiIndicatorService;
+            _levelService = levelService;
         }
         
-
         private void Awake()
         {
             _gold = _thisTransform.GetComponent<IGoldChanger>();
@@ -58,6 +60,11 @@ namespace Logic.Boat
                 _goldCountIndicator = GetComponent<GoldCountIndicator>();
 
             IsEmpty = true;
+        }
+
+        public void SetIndicator(UIDirectToWorldObject uiDirect)
+        {
+            _indicator = uiDirect;
         }
 
         public void SetCostDelivery(float cost)
@@ -84,6 +91,26 @@ namespace Logic.Boat
             return true;
         }
 
+        public void ShowIndicator()
+        {
+            _indicator.SetFollowingObject(_thisTransform);
+            _indicator.EnableIndicator();
+        }
+
+        public void HideIndicator()
+        {
+            if (_passenger != null && _passenger.ActorTeam != Team.Player_0)
+            {
+                bool existPlayer = _passenger.CurrentIsland.ActorExistOnIsland(_levelService.PlayerActor);
+                if (existPlayer)
+                {
+                    return;
+                }
+            }
+                
+            _indicator.DisableIndicator();
+        }
+
         private bool TrySetPassenger(Actor passenger)
         {
             if (_passenger != null) return false;
@@ -94,8 +121,8 @@ namespace Logic.Boat
 
         private IEnumerator Delivery()
         {
-            if(_passenger.ActorTeam == Team.Player_0)
-                _uiIndicatorService.DisableIndicator();
+            if (_passenger.ActorTeam == Team.Player_0)
+                HideIndicator();
             
             _passenger.IsTravel = true;
             _goldCountIndicator.DisableIndicator();
@@ -126,14 +153,16 @@ namespace Logic.Boat
 
         private void DropOff()
         {
-            if (_passenger.ActorTeam == Team.Player_0)
-            {
-                _uiIndicatorService.SetFollowingObject(_passenger.CurrentIsland.PiersTransform);
-                _uiIndicatorService.EnableIndicator();
-            }
-
             _passenger.ActorTransform.parent = null;
             _passenger.ActorTransform.position = _destinationPoint.position;
+
+            if (_passenger.CurrentIsland.IsLast)
+            {
+                _passenger.GetComponent<NavMeshMovement>().GoTo(_passenger.CurrentIsland.GetFinalPoint.position);
+                OnDropOff?.Invoke(_passenger);
+                return;
+            }
+            
             _passenger.GetComponent<IMovement>().EnableMoveComponent();
 
             OnDropOff?.Invoke(_passenger);
@@ -158,6 +187,9 @@ namespace Logic.Boat
                 
                 yield return null;
             }
+            
+            Destroy(gameObject);
         }
+        
     }
 }

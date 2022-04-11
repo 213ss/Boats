@@ -13,5 +13,7 @@ namespace Logic.Boat
         void SetCostDelivery(float cost);
         void SetDestinationPoint(Transform destination);
         bool TryStartDelivery(Actor passenger);
+        void ShowIndicator();
+        void HideIndicator();
     }
 }

@@ -18,8 +18,8 @@ namespace Infrastructure.LevelStates
                 [typeof(LoadLevelState)] = new LoadLevelState(this, diContainer),
                 [typeof(PressToTapState)] = new PressToTapState(this, diContainer, coroutineRunner),
                 [typeof(LevelProcessState)] = new LevelProcessState(this, coroutineRunner),
-                [typeof(LevelWinState)] = new LevelWinState(diContainer),
-                [typeof(LevelLoseState)] = new LevelLoseState(this, diContainer)
+                [typeof(LevelWinState)] = new LevelWinState(diContainer, coroutineRunner),
+                [typeof(LevelLoseState)] = new LevelLoseState(diContainer, coroutineRunner)
                 
             };
         }
