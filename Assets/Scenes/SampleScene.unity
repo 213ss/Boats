@@ -274,26 +274,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 428450, guid: 1e1dcb2c3cf62ef4ea1ceb9ad4dc3314, type: 3}
   m_PrefabInstance: {fileID: 1267185275}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &34386784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34386787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd73edf4aaecf6644b443cc7f93110e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _amount: 10
-  _lifeTime: 0.5
-  _intervalRate: 0.15
-  _easeType: 0
-  _originPoint: {fileID: 836650775}
-  _destinationPoint: {fileID: 2094979839}
-  _offset: {x: 25, y: 0, z: 0}
-  _uiGoldVFXPrefab: {fileID: 3053165907685490737, guid: 49bef0e67fff14d41ac872c3f62b323c, type: 3}
 --- !u!223 &34386785
 Canvas:
   m_ObjectHideFlags: 0
@@ -345,9 +325,8 @@ GameObject:
   m_Component:
   - component: {fileID: 34386786}
   - component: {fileID: 34386785}
-  - component: {fileID: 34386784}
   m_Layer: 5
-  m_Name: ParicalCanvas
+  m_Name: ParticalCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
