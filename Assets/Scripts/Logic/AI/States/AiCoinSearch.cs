@@ -16,12 +16,12 @@ namespace Logic.AI.States
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly Actor _ownerActor;
         private readonly IIslandService _islandService;
+        private readonly IAIMovement _movement;
 
         private Actor _currentTarget;
-        
+
         private Coroutine _searchCoinsCoroutine;
         private BaseIsland _island;
-        private readonly IAIMovement _movement;
         private Collider[] _bufferGoldLoot = new Collider[5];
         private GoldLoots _currentLootTarget;
 

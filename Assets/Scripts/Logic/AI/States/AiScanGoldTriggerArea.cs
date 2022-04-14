@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using Actors;
 using Enemy;
-using Infrastructure.AssetManagment;
 using Infrastructure.Data.ScriptableObjects;
-using Logic.Weapon.Weapons;
+using Infrastructure.Services.LevelService;
 using Scripts.Infrastructure;
 using UnityEngine;
+using Zenject;
 
 namespace Logic.AI.States
 {
@@ -17,20 +17,20 @@ namespace Logic.AI.States
         
         private readonly AiStateMachine _stateMachine;
         private readonly ICoroutineRunner _coroutineRunner;
-        private readonly IShovelWeapon _shovelWeapon;
-        
+
         private Coroutine _scanGoldTriggerCoroutine;
 
-        public AiScanGoldTriggerArea(AiStateMachine stateMachine, Actor ownerActor, ICoroutineRunner coroutineRunner)
+        public AiScanGoldTriggerArea(AiStateMachine stateMachine, DiContainer diContainer, Actor ownerActor, ICoroutineRunner coroutineRunner)
         {
             _stateMachine = stateMachine;
             _ownerActor = ownerActor;
             _coroutineRunner = coroutineRunner;
 
-            _aiData = Resources.Load<AiData>(AssetsPath.AiTriggerSearchData);
+            ILevelService levelService = diContainer.Resolve<ILevelService>();
+
+            _aiData = levelService.AIParametersData;
             
             _movementService = _ownerActor.GetComponent<IAIMovement>();
-            _shovelWeapon = _ownerActor.GetComponent<IShovelWeapon>();
         }
 
         public void Enter()

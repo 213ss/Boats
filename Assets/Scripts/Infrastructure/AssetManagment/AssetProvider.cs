@@ -18,6 +18,11 @@ namespace Infrastructure.AssetManagment
             return SpawnFromDI(filePath, at);
         }
 
+        public GameObject Instantiate(GameObject origin, Vector3 at)
+        {
+            return _diContainer.InstantiatePrefab(origin, at, Quaternion.identity, null);
+        }
+
         private GameObject SpawnFromDI(string path, Vector3 position)
         {
             return _diContainer.InstantiatePrefabResource(path, position, Quaternion.identity, null);

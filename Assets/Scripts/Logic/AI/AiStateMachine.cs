@@ -17,11 +17,11 @@ namespace Logic.AI
             _states = new Dictionary<Type, IState>
             {
                 [typeof(AiWaitPlayerActorState)] = new AiWaitPlayerActorState(this, aiOwner, coroutineRunner),
-                [typeof(AiScanGoldTriggerArea)] = new AiScanGoldTriggerArea(this, aiOwner, coroutineRunner),
+                [typeof(AiScanGoldTriggerArea)] = new AiScanGoldTriggerArea(this, diContainer, aiOwner, coroutineRunner),
                 [typeof(AiTriggerGoldSearchState)] = new AiTriggerGoldSearchState(stateMachine: this, aiOwner, coroutineRunner),
                 [typeof(AiDigGoldState)] = new AiDigGoldState(stateMachine: this, aiOwner, coroutineRunner),
                 [typeof(AiGoToNextIslandState)] = new AiGoToNextIslandState(stateMachine: this, diContainer, aiOwner, coroutineRunner),
-                [typeof(AiDroppedOutGameState)] = new AiDroppedOutGameState(stateMachine: this, aiOwner),
+                [typeof(AiDroppedOutGameState)] = new AiDroppedOutGameState(),
                 [typeof(AiTravelState)] = new AiTravelState(stateMachine: this, aiOwner, coroutineRunner),
                 [typeof(AiCoinSearch)] = new AiCoinSearch(stateMachine: this, diContainer, coroutineRunner, aiOwner),
                 [typeof(AiPatrolState)] = new AiPatrolState(this, diContainer, aiOwner, coroutineRunner),

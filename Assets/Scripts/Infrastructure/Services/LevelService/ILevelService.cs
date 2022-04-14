@@ -1,4 +1,5 @@
 ﻿using Actors;
+using Infrastructure.Data.ScriptableObjects;
 
 namespace Infrastructure.Services.LevelService
 {
@@ -9,5 +10,6 @@ namespace Infrastructure.Services.LevelService
         void QuitGame();
         void SetPlayerActor(Actor actor);
         Actor PlayerActor { get; }
+        AiData AIParametersData { get; }
     }
 }

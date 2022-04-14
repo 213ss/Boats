@@ -6,5 +6,6 @@ namespace Infrastructure.AssetManagment
     {
         GameObject Instantiate(string filePath);
         GameObject Instantiate(string filePath, Vector3 at);
+        GameObject Instantiate(GameObject origin, Vector3 at);
     }
 }

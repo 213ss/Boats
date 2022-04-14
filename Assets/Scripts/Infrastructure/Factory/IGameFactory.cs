@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Logic.Boat;
 using Logic.GoldLoot;
+using Logic.Triggers;
 using UnityEngine;
 
 namespace Infrastructure.Factory
@@ -13,7 +14,8 @@ namespace Infrastructure.Factory
         GameObject CreateGameObject(string path);
         GameObject CreateGameObject(GameObject prefab);
         GameObject CreateGameObject(string path, Vector3 at);
-        GoldLoots CreateGoldLoot(Vector3 position);
+        GoldLoots CreateGoldLoot(GameObject origin, Vector3 position);
+        GoldAreaTrigger CreateGoldAreaTrigger(GameObject origin, Vector3 position);
         BaseBoat CreateBoat(Vector3 position);
     }
 }

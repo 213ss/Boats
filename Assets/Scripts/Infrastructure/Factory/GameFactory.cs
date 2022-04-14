@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Infrastructure.AssetManagment;
 using Logic.Boat;
 using Logic.GoldLoot;
+using Logic.Triggers;
 using UnityEngine;
 using Zenject;
 
@@ -39,10 +40,16 @@ namespace Infrastructure.Factory
             return actor;
         }
 
-        public GoldLoots CreateGoldLoot(Vector3 position)
+        public GoldLoots CreateGoldLoot(GameObject origin, Vector3 position)
         {
-            GameObject loot = _assets.Instantiate(AssetsPath.GoldLootPath, position);
+            GameObject loot = _assets.Instantiate(origin, position);
             return loot.GetComponentInChildren<GoldLoots>();
+        }
+
+        public GoldAreaTrigger CreateGoldAreaTrigger(GameObject origin, Vector3 position)
+        {
+            GameObject trigger = _assets.Instantiate(origin, position);
+            return trigger.GetComponentInChildren<GoldAreaTrigger>();
         }
 
         public BaseBoat CreateBoat(Vector3 position)

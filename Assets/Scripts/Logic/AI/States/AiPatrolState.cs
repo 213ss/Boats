@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using Actors;
 using Enemy;
-using Infrastructure.AssetManagment;
 using Infrastructure.Data.ScriptableObjects;
+using Infrastructure.Services.LevelService;
 using Scripts.Infrastructure;
 using UnityEngine;
 using Zenject;
@@ -26,8 +26,10 @@ namespace Logic.AI.States
             _aiOwner = aiOwner;
             _coroutineRunner = coroutineRunner;
             _stateMachine = stateMachine;
-            
-            _aiData = Resources.Load<AiData>(AssetsPath.AiTriggerSearchData);
+
+            ILevelService levelService = diContainer.Resolve<ILevelService>();
+
+            _aiData = levelService.AIParametersData;
 
             _movement = _aiOwner.GetComponent<IAIMovement>();
         }

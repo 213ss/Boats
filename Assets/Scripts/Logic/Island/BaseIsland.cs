@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Actors;
-using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
 using Infrastructure.Services.Islands;
 using Infrastructure.Services.UIDirect;
@@ -52,6 +51,7 @@ namespace Logic.Island
         [Header("Trigger settings")] 
         [SerializeField] private float _distanceSpawn;
         [SerializeField] private Transform _spawnTriggerTransform;
+        [SerializeField] private GameObject _goldTriggerPrefab;
 
         private List<Actor> _actorsInInsland = new List<Actor>();
         private List<Actor> _actorsDelivry = new List<Actor>();
@@ -273,12 +273,12 @@ namespace Logic.Island
             
             for (int i = 0; i < _countTriggers; ++i)
             {
-                GameObject goldTrigger =
-                    _gameFactory.CreateGameObject(AssetsPath.GoldTrigger, GetRandomPointInIsland());
+                GoldAreaTrigger goldTrigger =
+                    _gameFactory.CreateGoldAreaTrigger(_goldTriggerPrefab, GetRandomPointInIsland());
                 
                 goldTrigger.transform.SetParent(_spawnTriggerTransform);
 
-                _allGoldTriggers[i] = goldTrigger.GetComponent<GoldAreaTrigger>();
+                _allGoldTriggers[i] = goldTrigger;
                 _allGoldTriggers[i].SetGoldPrize(_goldTriggerPrize);
             }
         }
