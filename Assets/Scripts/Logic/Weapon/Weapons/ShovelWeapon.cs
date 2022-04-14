@@ -115,7 +115,7 @@ namespace Logic.Weapon.Weapons
             if (_strikeCoroutine == null)
             {
                 if(_ownerActor.ActorTeam == Team.Player_0)
-                    //_vibrate.PlayVibrate(0.4f);
+                    _vibrate.PlayVibrate(0.4f);
                 
                 _strikeCoroutine = StartCoroutine(ShovelStrike());
             }
@@ -194,8 +194,8 @@ namespace Logic.Weapon.Weapons
                 yield return null;
             }
             
-            //if(_ownerActor.ActorTeam == Team.Player_0)
-                //_vibrate.PlayVibrate(0.4f);
+            if(_ownerActor.ActorTeam == Team.Player_0)
+                _vibrate.PlayVibrate(0.4f);
             
             _stickmanAnimator.StopDigging();
 
