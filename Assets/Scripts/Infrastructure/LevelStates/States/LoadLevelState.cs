@@ -1,6 +1,7 @@
 ﻿using Actors;
 using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
+using Infrastructure.Services.Game;
 using Infrastructure.Services.Islands;
 using Infrastructure.Services.LevelService;
 using Infrastructure.Services.SaveLoad;
@@ -22,7 +23,7 @@ namespace Infrastructure.LevelStates.States
         private readonly IIslandService _islandService;
         
         private readonly ISaveLoadService _saveLoadService;
-        private readonly IPersistenceProgressServices _persistanceProgress;
+        private readonly IPersistenceProgressServices _persistenceProgress;
         private readonly ILevelService _levelService;
 
         public LoadLevelState(StateMachine stateMachine, DiContainer diContainer)
@@ -33,23 +34,25 @@ namespace Infrastructure.LevelStates.States
             _skinChanger = diContainer.Resolve<ISkinChanger>();
             _islandService = diContainer.Resolve<IIslandService>();
             _saveLoadService = diContainer.Resolve<ISaveLoadService>();
-            _persistanceProgress = diContainer.Resolve<IPersistenceProgressServices>();
+            _persistenceProgress = diContainer.Resolve<IPersistenceProgressServices>();
             _levelService = diContainer.Resolve<ILevelService>();
         }
 
         public void Enter()
         {
-            var spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
-            var mainActor = _gameFactory.CreateGameObject(AssetsPath.MainActorPath, spawnPoint.transform.position);
+            GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
+            GameObject mainActor = _gameFactory.CreateGameObject(AssetsPath.MainActorPath, spawnPoint.transform.position);
+            
+            GameService gameService = Object.FindObjectOfType<GameService>();
             
             _levelService.SetPlayerActor(mainActor.GetComponent<Actor>());
+            _levelService.SetGameService(gameService);
             
             Object.FindObjectOfType<PlayerGoldWidget>().SetGoldService(mainActor.GetComponent<IGold>());
             
             _cameraFollow.SetFollow(mainActor.transform);
             
             _skinChanger.InitSkinContainer();
-            
             _skinChanger.SetDefaultMainActorSkin(mainActor.GetComponent<ISkin>());
             
             _islandService.SetActorToStartIsland(mainActor.GetComponent<Actor>());
@@ -61,7 +64,7 @@ namespace Infrastructure.LevelStates.States
 
         private void LoadPlayerProgress()
         {
-            _persistanceProgress.progress = _saveLoadService.LoadProgress();
+            _persistenceProgress.progress = _saveLoadService.LoadProgress();
         }
 
         public void Exit()
