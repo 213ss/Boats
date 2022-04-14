@@ -26,7 +26,8 @@ namespace Logic.UI.GoldWidget
 
         private void OnDestroy()
         {
-            _gold.OnGoldChange -= UpdateGoldText;
+            if(_gold != null)
+                _gold.OnGoldChange -= UpdateGoldText;
         }
     }
 }
