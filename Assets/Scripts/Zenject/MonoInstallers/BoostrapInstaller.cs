@@ -30,7 +30,6 @@ namespace Zenject.MonoInstallers
         public CameraFollow _cameraFollow;
         public SkinChanger _skinChanger;
         public GoldIndicator goldIndicator;
-        public VfxFromTo _vfxFromTo;
         public IslandService _islandService;
         public ScreenService _screenService;
         public Vibrate _Vibrate;
@@ -63,7 +62,6 @@ namespace Zenject.MonoInstallers
             MovementIstanller();
             GroundDetector();
             
-            VfxFromToInstaller();
             IslandServiceInstaller();
             ScreenServiceInstaller();
 
@@ -136,16 +134,6 @@ namespace Zenject.MonoInstallers
                 .Bind<IIslandService>()
                 .To<IslandService>()
                 .FromInstance(_islandService)
-                .AsSingle()
-                .NonLazy();
-        }
-
-        private void VfxFromToInstaller()
-        {
-            Container
-                .Bind<IVfxFromTo>()
-                .To<VfxFromTo>()
-                .FromInstance(_vfxFromTo)
                 .AsSingle()
                 .NonLazy();
         }

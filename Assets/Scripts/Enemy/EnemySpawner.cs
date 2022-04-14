@@ -11,7 +11,7 @@ namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private Team _enemyTeam;
+        [SerializeField] private Team _team;
         [SerializeField] private Vector3 _offsetSpawn;
 
         [Header("Component references")] 
@@ -42,9 +42,9 @@ namespace Enemy
             GameObject enemyGameObject = _gameFactory.CreateGameObject(AssetsPath.EnemyActorPath, _spawnTransform.position + _offsetSpawn);
             Actor enemyActor = enemyGameObject.GetComponent<Actor>();
             
-            enemyActor.SetTeam(_enemyTeam);
+            enemyActor.SetTeam(_team);
             _islandService.SetActorToStartIsland(enemyActor);
-            _skinChanger.SetSkin((int)_enemyTeam, enemyActor.GetComponent<ISkin>());
+            _skinChanger.SetSkin((int)_team, enemyActor.GetComponent<ISkin>());
         }
 
 

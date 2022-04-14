@@ -13,12 +13,12 @@ namespace Infrastructure.Services.Vibrate
         private void Start()
         {
             IsEnableVibrate = true;
-            Vibration.Init();
+            //Vibration.Init();
         }
 
         private void Update()
         {
-            if(_isVibrate && IsEnableVibrate) Handheld.Vibrate();
+            //if(_isVibrate && IsEnableVibrate) Handheld.Vibrate();
         }
 
         public void EnableVibrate()
@@ -33,7 +33,7 @@ namespace Infrastructure.Services.Vibrate
 
         public void PlayVibrate(float time)
         {
-            Vibration.VibratePop();
+            //Vibration.VibratePop();
         }
     }
 }
