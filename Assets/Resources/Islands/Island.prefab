@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336093271}
   m_LocalRotation: {x: 0, y: 0.05756407, z: 0, w: 0.99834186}
-  m_LocalPosition: {x: 0.1366, y: -2.42, z: 0.022}
+  m_LocalPosition: {x: 0.1383, y: -2.42, z: 0.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 412152783194428531}
@@ -260,6 +260,7 @@ MonoBehaviour:
   _indicators: []
   _distanceSpawn: 16
   _spawnTriggerTransform: {fileID: 412152783052382490}
+  _goldTriggerPrefab: {fileID: 0}
   GizmoColor: {r: 0.9150943, g: 0.056114297, b: 0.50265443, a: 1}
   PointSize: 1
   IsDisplaying: 1
