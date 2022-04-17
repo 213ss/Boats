@@ -513,7 +513,9 @@ MonoBehaviour:
   - {fileID: 102900000, guid: 01ffd9a4cd583a9459edf103634c2eb5, type: 3}
   - {fileID: 102900000, guid: d147134216a7b2544b09fe95b4dd3e2a, type: 3}
   - {fileID: 102900000, guid: 2f1abaa43068ca34f91af03608f470a4, type: 3}
-  - {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  - {fileID: 102900000, guid: 3334a74a6e0d3e04b8bc59ea5e1020de, type: 3}
+  - {fileID: 102900000, guid: 1fb43efbdcbe0de42a2499e537d91a46, type: 3}
+  - {fileID: 102900000, guid: 26f7a62b922f1f04a95b50d88e54867f, type: 3}
   _curtain: {fileID: 427559267}
 --- !u!4 &731286710
 Transform:

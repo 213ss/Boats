@@ -3561,7 +3561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6248511632197181790, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.5
+      value: -10.59
       objectReference: {fileID: 0}
     - target: {fileID: 6248511632197181790, guid: bd1206dbf0a8fda4f9faed77790d3c5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3811,7 +3811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _distanceSpawn
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _destinationPoint
@@ -5075,7 +5075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _distanceSpawn
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _destinationPoint
@@ -6817,7 +6817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90956c994a54a4ebf368ec251278a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aiParametersData: {fileID: 11400000, guid: e3735f5902860c94d9fc734d1afe687c, type: 2}
+  _aiParametersData: {fileID: 11400000, guid: 7d1d5548457ee35488706830d2847522, type: 2}
 --- !u!1 &2348195024674415192
 GameObject:
   m_ObjectHideFlags: 0
@@ -6865,8 +6865,8 @@ MonoBehaviour:
   _defaultEnemyActorSkin: {fileID: 11400000, guid: ea624bbbdd9e63d4c89ec3b4313edc8e, type: 2}
   _allActorSkins:
   - {fileID: 11400000, guid: ea624bbbdd9e63d4c89ec3b4313edc8e, type: 2}
-  - {fileID: 11400000, guid: a020a3b9e4fa5b648b9a92d9972d596b, type: 2}
   - {fileID: 11400000, guid: 7f5ec340ba6fc5545b58994ed37c6617, type: 2}
+  - {fileID: 11400000, guid: a020a3b9e4fa5b648b9a92d9972d596b, type: 2}
   - {fileID: 11400000, guid: 8b76cdda68a168c48b4fa5bdaf8f3984, type: 2}
   - {fileID: 11400000, guid: 38906bab73490284e9f6b1a140615a24, type: 2}
   - {fileID: 11400000, guid: 16d072d5c2c09c144ad54cc106f6ce99, type: 2}
