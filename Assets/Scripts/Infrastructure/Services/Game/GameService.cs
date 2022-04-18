@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Infrastructure.Data.ScriptableObjects;
 using Logic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,17 +9,23 @@ namespace Infrastructure.Services.Game
 
     public class GameService : MonoBehaviour
     {
-        public int ScenesCount => _scenes.Count;
+        public int ScenesCount => _sceneNames.Count;
         public int CurrentSceneIndex => _currentSceneIndex;
         
-        [SerializeField] private List<SceneAsset> _scenes = new List<SceneAsset>();
         [SerializeField] private LoadingCurtain _curtain;
-        
+
+        private List<string> _sceneNames = new List<string>();
+
         private int _currentSceneIndex;
+
+        private LevelReferences _levelReferences;
 
         private void Awake()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            _levelReferences = Resources.Load<LevelReferences>("Data/LevelReferences");
+            _sceneNames.AddRange(_levelReferences.GetSceneNames());
             
             DontDestroyOnLoad(this);
         }
@@ -35,14 +41,14 @@ namespace Infrastructure.Services.Game
 
             if (_currentSceneIndex == 0)
             {
-                SceneManager.LoadScene(_scenes[_currentSceneIndex].name);
+                SceneManager.LoadScene(_sceneNames[_currentSceneIndex]);
             }
             else
             {
                 int nextSceneIndex = ++_currentSceneIndex;
-                if (nextSceneIndex < _scenes.Count)
+                if (nextSceneIndex < _sceneNames.Count)
                 {
-                    SceneManager.LoadScene(_scenes[nextSceneIndex].name);
+                    SceneManager.LoadScene(_sceneNames[nextSceneIndex]);
                 }
                 else
                 {
@@ -54,10 +60,10 @@ namespace Infrastructure.Services.Game
         public void RestartLevel()
         {
             _curtain.Show();
-            SceneManager.LoadScene(_scenes[_currentSceneIndex].name);
+            SceneManager.LoadScene(_sceneNames[_currentSceneIndex]);
         }
 
-        private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode sceneMode)
+        private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
         {
             _curtain.Hide();
         }
