@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,15 +17,18 @@ namespace Infrastructure.Data.ScriptableObjects
         
         public void SaveLevelNames()
         {
-            string[] names = new string[_sceneNames.Count];
-
+            StreamWriter writer;
+            FileInfo file = new FileInfo("Assets/Resources/Data/LevelsData.csv");
+            writer = file.CreateText();
+            
             for (int i = 0; i < _scenes.Count; i++)
             {
-                names[i] = _scenes[i].name;
+                writer.Write(_scenes[i].name + ",");
             }
 
-            _levelReferences.SetSceneNames(names);
+            writer.Close();
         }
+        
 #endif
     }
 }

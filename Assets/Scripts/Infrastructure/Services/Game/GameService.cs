@@ -16,7 +16,7 @@ namespace Infrastructure.Services.Game
 
         private List<string> _sceneNames = new List<string>();
 
-        private int _currentSceneIndex;
+        private int _currentSceneIndex = -1;
 
         private LevelReferences _levelReferences;
 
@@ -39,21 +39,14 @@ namespace Infrastructure.Services.Game
         {
             _curtain.Show();
 
-            if (_currentSceneIndex == 0)
+            int nextSceneIndex = ++_currentSceneIndex;
+            if (nextSceneIndex < _sceneNames.Count)
             {
-                SceneManager.LoadScene(_sceneNames[_currentSceneIndex]);
+                SceneManager.LoadScene(_sceneNames[nextSceneIndex]);
             }
             else
             {
-                int nextSceneIndex = ++_currentSceneIndex;
-                if (nextSceneIndex < _sceneNames.Count)
-                {
-                    SceneManager.LoadScene(_sceneNames[nextSceneIndex]);
-                }
-                else
-                {
-                    _curtain.Hide();
-                }
+                _curtain.Hide();
             }
         }
 
