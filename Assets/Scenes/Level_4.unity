@@ -6778,7 +6778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _countTriggers
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _distanceSpawn
