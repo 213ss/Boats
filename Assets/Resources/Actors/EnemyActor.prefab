@@ -259,7 +259,7 @@ MonoBehaviour:
   _excavationTime: 0.5
   _vfxGoldBurst: {fileID: -1690369165585727028}
   _holeDistanceOffset: 3
-  _holeDistanceFromGround: -0.3
+  _holeDistanceFromGround: 0
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256

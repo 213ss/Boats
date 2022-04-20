@@ -4412,6 +4412,10 @@ PrefabInstance:
       value: TorusIsland
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c40c4840cb6e0e94c909fdeb710b0d1f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c40c4840cb6e0e94c909fdeb710b0d1f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -7068,6 +7072,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 1903408029}
     m_Modifications:
     - target: {fileID: 1961632487, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
+      propertyPath: m_Size.x
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961632487, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
+      propertyPath: m_Size.y
+      value: 11.685247
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961632487, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
+      propertyPath: m_Size.z
+      value: 0.22202533
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961632487, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
+      propertyPath: m_Center.x
+      value: -1.4174327e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961632487, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
+      propertyPath: m_Center.y
+      value: 4.3426237
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961632487, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
+      propertyPath: m_Center.z
+      value: -0.001012737
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961632487, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -7126,6 +7154,10 @@ PrefabInstance:
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _boatsCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
+      propertyPath: IsDisplaying
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 412152783052382494, guid: 27d016e3b8a838f4b9061f5ed6d101c7, type: 3}
       propertyPath: _costDelivery
