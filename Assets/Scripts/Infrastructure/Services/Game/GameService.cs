@@ -46,7 +46,8 @@ namespace Infrastructure.Services.Game
             }
             else
             {
-                _curtain.Hide();
+                nextSceneIndex = 0;
+                SceneManager.LoadScene(_sceneNames[nextSceneIndex]);
             }
         }
 
