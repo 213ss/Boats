@@ -41,14 +41,14 @@ namespace Infrastructure.Services.IslandIndicator
         {
             for (int i = 0; i < _indicators.Count; ++i)
             {
-                if (i <= currentIsland)
+                if (i < currentIsland)
                 {
                     _indicators[i].SetSprite(_completeSrpite);
                 }
             }
             
-            if((currentIsland + 1) < countIsland )
-                _indicators[currentIsland + 1].SetSprite(_nextSrpite);
+            if(currentIsland <= countIsland )
+                _indicators[currentIsland].SetSprite(_nextSrpite);
         }
 
         private void CreateWidgets(int count)
