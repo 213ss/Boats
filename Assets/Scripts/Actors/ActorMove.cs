@@ -39,13 +39,16 @@ namespace Actors
             {
                 IsMovement = true;
                 _isStopped = false;
-                _characterController.SimpleMove(direction * _moveSpeed);
+                //_characterController.SimpleMove(direction * _moveSpeed);
                 transform.forward = direction;
                 
                 _stickmanAnimator.StopDigging();
                 _stickmanAnimator.Move();
             }
-            else
+            
+            _characterController.SimpleMove(direction * _moveSpeed);
+            
+            if(direction == Vector3.zero)
             {
                 IsMovement = false;
                 _isStopped = true;
