@@ -11,7 +11,6 @@ namespace Infrastructure.Services.GoldLoot
 {
     public class GoldLootService : MonoBehaviour, IGoldLootService
     {
-        [SerializeField] private float _percentDrop;
         [SerializeField] private GameObject _goldLootPrefab;
 
         private IGameFactory _gameFactory;
@@ -27,18 +26,18 @@ namespace Infrastructure.Services.GoldLoot
 
         public void OnDropGold(IGoldChanger goldChanger, Vector3 spawnPosition, Actor owner)
         {
-            float gold = goldChanger.CurrentCount;
-            float percent = (gold / 100.0f) * _percentDrop;
+            float remainderGold = goldChanger.CurrentCount % 2;
+            float gold = (goldChanger.CurrentCount - remainderGold) / 2;
             
             if(gold <= 0.0f) return;
             
             BaseIsland island = _islandService.TryGetIslandForActor(owner);
             
             
-            goldChanger.SubstractionGold(percent);
+            goldChanger.SubstractionGold(gold);
 
             float goldPerShard = 1.0f;
-            int countShards = Mathf.RoundToInt(percent);
+            int countShards = Mathf.RoundToInt(gold);
 
             for (int i = 0; i < countShards; ++i)
             {

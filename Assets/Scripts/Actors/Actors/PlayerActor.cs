@@ -82,14 +82,7 @@ namespace Actors.Actors
         
             if(_isActive == false) return;
             
-            if (_inputServices.IsLeftMouseButton())
-            {
-                _movement.Move(_inputServices.Axes());
-            }
-            else
-            {
-                _stickmanAnimator.StopMoving();
-            }
+            _movement.Move(_inputServices.Axes());
             
         }
 
