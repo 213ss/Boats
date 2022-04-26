@@ -314,10 +314,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8326110309241525898}
+  - component: {fileID: 8360633963498765830}
   - component: {fileID: 4909929248229169455}
   - component: {fileID: 7189827389089705445}
   - component: {fileID: 8360633963498765829}
-  - component: {fileID: 8360633963498765830}
   m_Layer: 8
   m_Name: Boble Island
   m_TagString: Untagged
@@ -342,6 +342,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8360633963498765830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703093695743740976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f0aa1201d09a249bb0564770c0d778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _countTriggers: 5
+  _goldTriggerPrize: 20
+  _costDelivery: 40
+  _destinationPoint: {fileID: 0}
+  _boatsPier: {fileID: 8196184698577716886}
+  _isLastIsland: 0
+  _finalPoint: {fileID: 0}
+  _boatsCount: 2
+  _boatsPoints:
+  - {fileID: 8360633963455445866}
+  - {fileID: 8360633963874243900}
+  - {fileID: 8360633963535964750}
+  - {fileID: 8360633965306552070}
+  - {fileID: 8360633964234404541}
+  - {fileID: 8360633964559639545}
+  _indicators:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _distanceSpawn: 8
+  _spawnTriggerTransform: {fileID: 8196184698627994798}
+  _goldTriggerPrefab: {fileID: 8385988181965102001, guid: e60c39a2d7bc72d47a4980feb365a16f, type: 3}
+  GizmoColor: {r: 0.9150943, g: 0.056114297, b: 0.50265443, a: 1}
+  PointSize: 1
+  IsDisplaying: 1
 --- !u!33 &4909929248229169455
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -405,43 +445,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6289043569589199451, guid: ba1777c2c81256341bba7148b3d54d5a, type: 3}
---- !u!114 &8360633963498765830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8703093695743740976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f0aa1201d09a249bb0564770c0d778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _countTriggers: 5
-  _goldTriggerPrize: 20
-  _costDelivery: 40
-  _destinationPoint: {fileID: 0}
-  _boatsPier: {fileID: 8196184698577716886}
-  _isLastIsland: 0
-  _finalPoint: {fileID: 0}
-  _boatsCount: 2
-  _boatsPoints:
-  - {fileID: 8360633963455445866}
-  - {fileID: 8360633963874243900}
-  - {fileID: 8360633963535964750}
-  - {fileID: 8360633965306552070}
-  - {fileID: 8360633964234404541}
-  - {fileID: 8360633964559639545}
-  _indicators:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _distanceSpawn: 8
-  _spawnTriggerTransform: {fileID: 8196184698627994798}
-  _goldTriggerPrefab: {fileID: 8385988181965102001, guid: e60c39a2d7bc72d47a4980feb365a16f, type: 3}
-  GizmoColor: {r: 0.9150943, g: 0.056114297, b: 0.50265443, a: 1}
-  PointSize: 1
-  IsDisplaying: 1
