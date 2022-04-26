@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -243,6 +243,34 @@ PrefabInstance:
       propertyPath: _destinationPoint
       value: 
       objectReference: {fileID: 658487203}
+    - target: {fileID: 6502602032317481460, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
+      propertyPath: _indicators.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502602032317481460, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
+      propertyPath: _indicators.Array.data[0]
+      value: 
+      objectReference: {fileID: 359209062}
+    - target: {fileID: 6502602032317481460, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
+      propertyPath: _indicators.Array.data[1]
+      value: 
+      objectReference: {fileID: 1655447663}
+    - target: {fileID: 6502602032317481460, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
+      propertyPath: _indicators.Array.data[2]
+      value: 
+      objectReference: {fileID: 1120959634}
+    - target: {fileID: 6502602032317481460, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
+      propertyPath: _indicators.Array.data[3]
+      value: 
+      objectReference: {fileID: 1446580473}
+    - target: {fileID: 6502602032317481460, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
+      propertyPath: _indicators.Array.data[4]
+      value: 
+      objectReference: {fileID: 1214305887}
+    - target: {fileID: 6502602032317481460, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
+      propertyPath: _indicators.Array.data[5]
+      value: 
+      objectReference: {fileID: 1815139371}
     - target: {fileID: 7320663967384186831, guid: db2387a3a8e93c049bcd89daf34508cd, type: 3}
       propertyPath: m_Name
       value: Crescent Island
@@ -1995,6 +2023,34 @@ PrefabInstance:
       propertyPath: _destinationPoint
       value: 
       objectReference: {fileID: 452701507}
+    - target: {fileID: 8360633963498765830, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
+      propertyPath: _indicators.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360633963498765830, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
+      propertyPath: _indicators.Array.data[0]
+      value: 
+      objectReference: {fileID: 359209062}
+    - target: {fileID: 8360633963498765830, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
+      propertyPath: _indicators.Array.data[1]
+      value: 
+      objectReference: {fileID: 1655447663}
+    - target: {fileID: 8360633963498765830, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
+      propertyPath: _indicators.Array.data[2]
+      value: 
+      objectReference: {fileID: 1120959634}
+    - target: {fileID: 8360633963498765830, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
+      propertyPath: _indicators.Array.data[3]
+      value: 
+      objectReference: {fileID: 1446580473}
+    - target: {fileID: 8360633963498765830, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
+      propertyPath: _indicators.Array.data[4]
+      value: 
+      objectReference: {fileID: 1214305887}
+    - target: {fileID: 8360633963498765830, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
+      propertyPath: _indicators.Array.data[5]
+      value: 
+      objectReference: {fileID: 1815139371}
     - target: {fileID: 8703093695743740976, guid: 0737dabea83905f47a6bc152070282e7, type: 3}
       propertyPath: m_Name
       value: Boble Island
@@ -3031,7 +3087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
       propertyPath: _indicators.Array.size
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
       propertyPath: _spawnTriggerTransform
@@ -3041,6 +3097,30 @@ PrefabInstance:
       propertyPath: _boatsPoints.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[0]
+      value: 
+      objectReference: {fileID: 359209062}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[1]
+      value: 
+      objectReference: {fileID: 1655447663}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[2]
+      value: 
+      objectReference: {fileID: 1120959634}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[3]
+      value: 
+      objectReference: {fileID: 1446580473}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[4]
+      value: 
+      objectReference: {fileID: 1214305887}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[5]
+      value: 
+      objectReference: {fileID: 1815139371}
     - target: {fileID: 5876384309299476496, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3991,7 +4071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7487842144003705454, guid: e944cd32699d1b9468781310b7924e4c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18374418
+      value: 0.18374416
       objectReference: {fileID: 0}
     - target: {fileID: 7487842144003705454, guid: e944cd32699d1b9468781310b7924e4c, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4564,6 +4644,34 @@ PrefabInstance:
       propertyPath: _destinationPoint
       value: 
       objectReference: {fileID: 67736392}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[0]
+      value: 
+      objectReference: {fileID: 359209062}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[1]
+      value: 
+      objectReference: {fileID: 1655447663}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[2]
+      value: 
+      objectReference: {fileID: 1120959634}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[3]
+      value: 
+      objectReference: {fileID: 1446580473}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[4]
+      value: 
+      objectReference: {fileID: 1214305887}
+    - target: {fileID: 4335085373443066039, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
+      propertyPath: _indicators.Array.data[5]
+      value: 
+      objectReference: {fileID: 1815139371}
     - target: {fileID: 5876384309299476496, guid: c8ab7fa09a9b18e4eb8832089fb3c561, type: 3}
       propertyPath: m_RootOrder
       value: 0
